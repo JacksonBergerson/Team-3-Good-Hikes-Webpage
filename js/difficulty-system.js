@@ -1,1 +1,0 @@
-// basic difficulty rating system on a 1-10 scale.
