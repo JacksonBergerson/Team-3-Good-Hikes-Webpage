@@ -72,7 +72,7 @@ const hikeId = urlParams.get('id');
 // find the matching hike data
 const hike = hikes[hikeId];
 
-// 4. Inject the data into the page HTML elements
+// inject the data into the page HTML elements
 if (hike) {
     document.title = hike.name;
     document.getElementById('hikeName').textContent = hike.name;

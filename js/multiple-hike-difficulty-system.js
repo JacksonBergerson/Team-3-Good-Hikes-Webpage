@@ -3,6 +3,7 @@ basic difficulty rating system on a 1-10 scale.
 1 mile = 1 pt.
 500 feet elevation gain = 1 pt.
 based on Petzoldt Energy Mile theory.
+use for a page with multiple hikes listed.
 */
 
 function getNumberFromClass(hikeElement, className) {
