@@ -1,0 +1,26 @@
+<!--
+    This page is the template/layout for every single hike that is
+    filled in with details from load-hike.js.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title id="page-title">Hike Details</title>
+        <link rel="stylesheet" href="/css/hikes.css">
+        <script defer src="/js/single-hike-difficulty-system.js"></script>
+        <script defer src="/js/load-hike.js"></script>
+    </head>
+    <body>
+        <a href="hikes.html">&larr; Back to all hikes</a>
+
+        <div class="hike" id="hike-card">
+            <strong id="hikeName">Loading...</strong>
+            <p class="length" id="hikeLength">Length: </p>
+            <p class="elevationGain" id="hikeElevation">Elevation Gain: </p>
+            <p id="hikeStyle">Style: </p>
+            <p class="difficulty" id="hikeDifficulty">Difficulty: </p>
+        </div>
+    </body>
+</html>
