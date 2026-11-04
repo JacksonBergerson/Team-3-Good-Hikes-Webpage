@@ -1,3 +1,5 @@
+// sprint 2
+
 // all trails data storage for all hikes
 const hikes = {
     "skyline-loop": {

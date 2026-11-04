@@ -1,3 +1,4 @@
+<!-- Sprint 2 -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,15 +18,15 @@
         </div>
         -->
         <div class="filterButtonDiv">Filter By:
-            <button onclick="filterHikes('Beginner')" class="filterButton">Beginner</button>
-            <button onclick="filterHikes('Easy')" class="filterButton">Easy</button>
-            <button onclick="filterHikes('Moderate')" class="filterButton">Medium</button>
-            <button onclick="filterHikes('Hard')" class="filterButton">Hard</button>
-            <button onclick="filterHikes('Strenuous')" class="filterButton">Strenuous</button>
-            <button onclick="filterHikes('All')" class="filterButton">All</button>
+            <button onclick="filterHikes(1, 2)" class="filterButton">Beginner (1-2)</button>
+            <button onclick="filterHikes(3, 4)" class="filterButton">Easy (3-4)</button>
+            <button onclick="filterHikes(5, 6)" class="filterButton">Moderate (5-6)</button>
+            <button onclick="filterHikes(7, 8)" class="filterButton">Hard (7-8)</button>
+            <button onclick="filterHikes(9, 10)" class="filterButton">Strenuous (9-10)</button>
+            <button onclick="filterHikes()" class="filterButton">All</button>
         </div>
         <div class="hike-list">
-            <div class="hike Hard">
+            <div class="hike">
                 <strong><a href="hike-details.html?id=skyline-loop">Skyline Loop</a></strong>
                 <p class="length">Length: 5.7 miles</p>
                 <p class="elevationGain">Elevation Gain: 1,784ft</p>
@@ -34,7 +35,7 @@
                 <img src = "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTQxNzUxNjMzL2E1NmY0MDhiOWZiMGE5MGJiNjhlNTAwYmQ0YTg2NjdkLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19" alt = "An image of Skyline Loop." width = 300px>
             </div>
 
-            <div class="hike Beginner">
+            <div class="hike">
                 <strong><a href="hike-details.html?id=myrtle-falls">Myrtle Falls</a></strong>
                 <p class="length">Length: 1 mile</p>
                 <p class="elevationGain">Elevation Gain: 167ft</p>
@@ -42,7 +43,7 @@
                 <p class="difficulty">Difficulty: Beginner</p>
             </div>
 
-            <div class="hike Strenuous">
+            <div class="hike">
                 <strong><a href="hike-details.html?id=pinnacle-peak">Pinnacle Peak</a></strong>
                 <p class="length">Length: 3 miles</p>
                 <p class="elevationGain">Elevation Gain: 1,581ft</p>
@@ -50,7 +51,7 @@
                 <p class="difficulty">Difficulty: Strenuous</p>
             </div>
 
-            <div class="hike Moderate">
+            <div class="hike">
                 <strong><a href="hike-details.html?id=naches-peak-loop">Naches Peak Loop</a></strong>
                 <p class="length">Length: 3.5 miles</p>
                 <p class="elevationGain">Elevation Gain: 643ft</p>
@@ -58,7 +59,7 @@
                 <p class="difficulty">Difficulty: Moderate</p>
             </div>
 
-            <div class="hike Moderate">
+            <div class="hike">
                 <strong><a href="hike-details.html?id=fremont-lookout">Fremont Lookout</a></strong>
                 <p class="length">Length: 5.8 miles</p>
                 <p class="elevationGain">Elevation Gain: 1,108ft</p>
@@ -66,7 +67,7 @@
                 <p class="difficulty">Difficulty: Moderate</p>
             </div>
 
-            <div class="hike Hard">
+            <div class="hike">
                 <strong><a href="hike-details.html?id=burrough-mountain">Burrough Mountain</a></strong>
                 <p class="length">Length: 8.9 miles</p>
                 <p class="elevationGain">Elevation Gain: 2,467ft</p>
@@ -74,7 +75,7 @@
                 <p class="difficulty">Difficulty: Hard</p>
             </div>
 
-            <div class="hike Hard">
+            <div class="hike">
                 <strong><a href="hike-details.html?id=high-rock-lookout">High Rock Lookout</a></strong>
                 <p class="length">Length: 3.4 miles</p>
                 <p class="elevationGain">Elevation Gain: 1,348ft</p>
@@ -82,7 +83,7 @@
                 <p class="difficulty">Difficulty: Hard</p>
             </div>
 
-            <div class="hike Easy">
+            <div class="hike">
                 <strong><a href="hike-details.html?id=narada-falls">Narada Falls</a></strong>
                 <p class="length">Length: 0.2 miles</p>
                 <p class="elevationGain">Elevation Gain: 78ft</p>
@@ -90,11 +91,11 @@
                 <p class="difficulty">Difficulty: Easy</p>
             </div>
 
-            <div class="hike Easy">
+            <div class="hike">
                 <strong><a href="hike-details.html?id=nisqually-vista-trail">Nisqually Vista Trail</a></strong>
                 <p class="length">Length: 1.1 miles</p>
                 <p class="elevationGain">Elevation Gain: 180ft</p>
-                <p>Style:Loop</p>
+                <p>Style: Loop</p>
                 <p class="difficulty">Difficulty: Easy</p>
             </div>
         </div>
