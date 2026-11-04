@@ -1,4 +1,4 @@
-function FilterHikes(filterClass){
+function filterHikes(filterClass){
 document.querySelectorAll(`.hike:not(${filterClass}, .Ignore)`).forEach(i => {
 if (filterClass == 'All' || i.classList.contains(filterClass)) {
       i.classList.remove('hidden');
