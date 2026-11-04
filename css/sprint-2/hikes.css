@@ -107,20 +107,20 @@ body {
 }
 
 /* Difficulty color accents */
-.hike[data-difficulty-band="beginner"] { border-left: 6px solid #16a34a; }
-.hike[data-difficulty-band="beginner"] p.difficulty { color: #16a34a; }
+.hike.Beginner { border-left: 6px solid #16a34a; }
+.hike.Beginner p.difficulty { color: #16a34a; }
 
-.hike[data-difficulty-band="easy"] { border-left: 6px solid #0284c7; }
-.hike[data-difficulty-band="easy"] p.difficulty { color: #0284c7; }
+.hike.Easy { border-left: 6px solid #0284c7; }
+.hike.Easy p.difficulty { color: #0284c7; }
 
-.hike[data-difficulty-band="moderate"] { border-left: 6px solid #d97706; }
-.hike[data-difficulty-band="moderate"] p.difficulty { color: #d97706; }
+.hike.Moderate { border-left: 6px solid #d97706; }
+.hike.Moderate p.difficulty { color: #d97706; }
 
-.hike[data-difficulty-band="hard"] { border-left: 6px solid #ea580c; }
-.hike[data-difficulty-band="hard"] p.difficulty { color: #ea580c; }
+.hike.Hard { border-left: 6px solid #ea580c; }
+.hike.Hard p.difficulty { color: #ea580c; }
 
-.hike[data-difficulty-band="strenuous"] { border-left: 6px solid #dc2626; }
-.hike[data-difficulty-band="strenuous"] p.difficulty { color: #dc2626; }
+.hike.Strenuous { border-left: 6px solid #dc2626; }
+.hike.Strenuous p.difficulty { color: #dc2626; }
 
 /* ===================================================
    Mobile Optimizations (< 640px)

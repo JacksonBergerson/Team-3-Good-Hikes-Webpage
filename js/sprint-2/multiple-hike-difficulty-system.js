@@ -1,5 +1,3 @@
-// sprint 2
-
 /*
 basic difficulty rating system on a 1-10 scale.
 1 mile = 1 pt.
@@ -14,7 +12,7 @@ function getNumberFromClass(hikeElement, className) {
   return parseFloat(element.textContent.replace(/[^0-9.]/g, '')) || 0;
 }
 
-// Find all hike container elements on the page
+// Find all trail container elements on the page
 const hikes = document.querySelectorAll('.hike');
 
 hikes.forEach((hike) => {
@@ -39,16 +37,6 @@ switch (true) {
 }
 
 console.log({ miles, elevationGain, pointCount, rating });
-
-const difficultyBand = rating <= 2 ? 'beginner'
-    : rating <= 4 ? 'easy'
-    : rating <= 6 ? 'moderate'
-    : rating <= 8 ? 'hard'
-    : 'strenuous';
-
-// Save the calculated values on the hike card for the filter and CSS to use.
-hike.setAttribute('data-difficulty-rating', String(rating));
-hike.setAttribute('data-difficulty-band', difficultyBand);
 
 const difficultyElement = hike.querySelector('.difficulty');
     if (difficultyElement) {
