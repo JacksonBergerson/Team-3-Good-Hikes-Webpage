@@ -1,6 +1,6 @@
 // sprint 2
 
-// all trails data storage for all hikes
+// all trails data storage for all hikes (add hikes here)
 const hikes = {
     "skyline-loop": {
         name: "Skyline Loop",
@@ -8,7 +8,8 @@ const hikes = {
         elevationGain: "1,784ft",
         style: "Loop",
         difficulty: "Hard", // <-- this is Alltrails difficulty, not our own (ours is more accurate)
-        surface: {natural: 45, gravel: 34, paved: 19, steps: 1, wood: 1}
+        surface: {natural: 45, gravel: 34, paved: 19, steps: 1, wood: 1},
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTQxNzUxNjMzL2E1NmY0MDhiOWZiMGE5MGJiNjhlNTAwYmQ0YTg2NjdkLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
     "myrtle-falls": {
         name: "Myrtle Falls",
@@ -73,7 +74,7 @@ const hikes = {
         style: "Loop",
         difficulty: "Easy",
         surface: {paved: 99, steps: 1}
-    }
+    },
 };
 
 // read the "id" value from the browser's URL (e.g. ?id=skyline-loop)
@@ -83,29 +84,66 @@ const hikeId = urlParams.get('id');
 // find the matching hike data
 const hike = hikes[hikeId];
 
-// inject the data into the page HTML elements
-if (hike) {
-    document.title = hike.name;
-    document.getElementById('hikeName').textContent = hike.name;
-    document.getElementById('hikeLength').textContent = `Length: ${hike.length}`;
-    document.getElementById('hikeElevation').textContent = `Elevation Gain: ${hike.elevationGain}`;
-    document.getElementById('hikeStyle').textContent = `Style: ${hike.style}`;
-    document.getElementById('hikeDifficulty').textContent = `Difficulty: ${hike.difficulty}`;
+// find out whether this is the details page or the all-hikes page
+const hikeCard = document.getElementById('hike-card'); // page with one hike's details
+const hikeList = document.querySelector('.hike-list'); // page with all hikes listed
 
-    applyDifficultyRating(document.getElementById('hike-card'), hike);
-} else {
-    const hikeCard = document.getElementById('hike-card');
-    if (hikeCard) {
+if (hikeCard) {
+    // on the details page, fill in the one hike selected by the URL
+    if (hike) {
+        document.title = hike.name;
+        document.getElementById('hikeName').textContent = hike.name;
+        document.getElementById('hikeLength').textContent = `Length: ${hike.length}`;
+        document.getElementById('hikeElevation').textContent = `Elevation Gain: ${hike.elevationGain}`;
+        document.getElementById('hikeStyle').textContent = `Style: ${hike.style}`;
+        document.getElementById('hikeDifficulty').textContent = `Difficulty: ${hike.difficulty}`;
+
+        applyDifficultyRating(hikeCard, hike);
+    } else {
         hikeCard.innerHTML = "<h2>Hike not found.</h2>";
-    } else if (!hikeId) {
-        document.querySelectorAll('.hike').forEach((card) => {
-            const link = card.querySelector('a[href*="id="]');
-            if (!link) return;
+    }
+} else if (hikeList) {
+    // on the all-hikes page, create one card for every hike in the hikes object
+    for (const id in hikes) {
+        const currentHike = hikes[id];
+        const card = document.createElement('div');
+        card.className = 'hike';
 
-            const cardHikeId = new URL(link.href).searchParams.get('id');
-            if (hikes[cardHikeId]) {
-                applyDifficultyRating(card, hikes[cardHikeId]);
-            }
-        });
+        const title = document.createElement('strong');
+        const link = document.createElement('a');
+        link.href = `hike-details.html?id=${encodeURIComponent(id)}`;
+        link.textContent = currentHike.name;
+        title.appendChild(link);
+        card.appendChild(title);
+
+        const length = document.createElement('p');
+        length.className = 'length';
+        length.textContent = `Length: ${currentHike.length}`;
+        card.appendChild(length);
+
+        const elevation = document.createElement('p');
+        elevation.className = 'elevationGain';
+        elevation.textContent = `Elevation Gain: ${currentHike.elevationGain}`;
+        card.appendChild(elevation);
+
+        const style = document.createElement('p');
+        style.textContent = `Style: ${currentHike.style}`;
+        card.appendChild(style);
+
+        const difficulty = document.createElement('p');
+        difficulty.className = 'difficulty';
+        difficulty.textContent = 'Difficulty:';
+        card.appendChild(difficulty);
+
+        // keep a hike's photo in the data so its card can display it too.
+        if (currentHike.image) {
+            const image = document.createElement('img');
+            image.src = currentHike.image;
+            image.alt = `An image of ${currentHike.name}.`;
+            card.appendChild(image);
+        }
+
+        hikeList.appendChild(card);
+        applyDifficultyRating(card, currentHike);
     }
 }
