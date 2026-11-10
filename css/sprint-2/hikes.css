@@ -1,151 +1,176 @@
-/* Base Box Sizing & Body */
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
-    color: #1f2937;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f6f7f5;
+    color: #24292e;
     margin: 0;
-    padding: 24px;
+    padding: 32px 20px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.5;
 }
 
-/* Filter container */
 .filterButtonDiv {
     background-color: #ffffff;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-bottom: 24px;
-    font-weight: bold;
+    border: 1px solid #e2e5e1;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-/* Filter buttons */
 .filterButton {
-    background-color: #e5e7eb;
-    color: #374151;
-    border: 1px solid #9ca3af;
-    border-radius: 6px;
-    padding: 8px 14px;
+    background-color: #f0f2ee;
+    color: #334033;
+    border: 1px solid #d4dad1;
+    border-radius: 8px;
+    padding: 8px 16px;
     font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.15s ease;
+    transition: all 0.2s ease;
 }
 
 .filterButton:hover {
-    background-color: #2563eb;
+    background-color: #2d5a27;
     color: #ffffff;
-    border-color: #1d4ed8;
+    border-color: #24491f;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(45, 90, 39, 0.2);
 }
 
-/* Hike card grid: auto-fits multiple columns on desktop */
 .hike-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
 }
 
-/* Individual hike card */
 .hike {
     background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 16px;
+    border: 1px solid #e5e8e3;
+    border-radius: 12px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
 }
 
-/* Hike title link: strong > a */
+.hike:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.hike img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 12px;
+    background-color: #e8eae6;
+}
+
 .hike strong a {
-    color: #1e3a8a;
+    color: #1e3f1a;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    transition: color 0.15s ease;
 }
 
 .hike strong a:hover {
+    color: #3b7a34;
     text-decoration: underline;
 }
 
-/* Hike detail text */
 .hike p {
     margin: 4px 0;
     font-size: 14px;
-    color: #4b5563;
+    color: #556052;
 }
 
-/* Metric labels */
 .hike p.length,
 .hike p.elevationGain {
-    color: #111827;
+    color: #1d241c;
+    font-weight: 500;
 }
 
-/* Difficulty label */
 .hike p.difficulty {
-    font-weight: bold;
-    margin-top: 8px;
-}
-
-/* Image inside hike card */
-.hike img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     margin-top: 10px;
 }
 
-/* Difficulty color accents */
-.hike[data-difficulty-band="beginner"] { border-left: 6px solid #16a34a; }
-.hike[data-difficulty-band="beginner"] p.difficulty { color: #16a34a; }
+.hike[data-difficulty-band="beginner"] { 
+    border-left: 6px solid #2e7d32; 
+}
+.hike[data-difficulty-band="beginner"] p.difficulty { 
+    color: #2e7d32; 
+}
 
-.hike[data-difficulty-band="easy"] { border-left: 6px solid #0284c7; }
-.hike[data-difficulty-band="easy"] p.difficulty { color: #0284c7; }
+.hike[data-difficulty-band="easy"] { 
+    border-left: 6px solid #0284c7; 
+}
+.hike[data-difficulty-band="easy"] p.difficulty { 
+    color: #0284c7; 
+}
 
-.hike[data-difficulty-band="moderate"] { border-left: 6px solid #d97706; }
-.hike[data-difficulty-band="moderate"] p.difficulty { color: #d97706; }
+.hike[data-difficulty-band="moderate"] { 
+    border-left: 6px solid #d97706; 
+}
+.hike[data-difficulty-band="moderate"] p.difficulty { 
+    color: #d97706; 
+}
 
-.hike[data-difficulty-band="hard"] { border-left: 6px solid #ea580c; }
-.hike[data-difficulty-band="hard"] p.difficulty { color: #ea580c; }
+.hike[data-difficulty-band="hard"] { 
+    border-left: 6px solid #ea580c; 
+}
+.hike[data-difficulty-band="hard"] p.difficulty { 
+    color: #ea580c; 
+}
 
-.hike[data-difficulty-band="strenuous"] { border-left: 6px solid #dc2626; }
-.hike[data-difficulty-band="strenuous"] p.difficulty { color: #dc2626; }
+.hike[data-difficulty-band="strenuous"] { 
+    border-left: 6px solid #be123c; 
+}
+.hike[data-difficulty-band="strenuous"] p.difficulty { 
+    color: #be123c; 
+}
 
-/* ===================================================
-   Mobile Optimizations (< 640px)
-   =================================================== */
 @media (max-width: 640px) {
     body {
+        padding: 16px 12px;
+    }
+
+    .hike-list {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .filterButtonDiv {
+        gap: 8px;
         padding: 12px;
     }
 
-    /* Stack cards to fill full mobile width */
-    .hike-list {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    /* Make buttons tap-friendly on touchscreens */
-    .filterButtonDiv {
-        gap: 6px;
-        padding: 10px;
-    }
-
     .filterButton {
-        flex: 1 1 calc(50% - 6px); /* 2 balanced columns of buttons */
+        flex: 1 1 calc(50% - 8px);
         text-align: center;
-        padding: 10px;             /* Larger touch target */
-        font-size: 15px;
+        padding: 10px 8px;
+        font-size: 14px;
     }
 }
