@@ -116,28 +116,27 @@ function makeHikeCard(hikeId, hike) {
 
     const title = document.createElement('strong');
     const link = document.createElement('a');
-    link.href = 'hike-details.html?id=' + encodeURIComponent(hikeId);
+    link.href = `hike-details.html?id=${encodeURIComponent(hikeId)}`;
     link.textContent = hike.name;
     title.appendChild(link);
     card.appendChild(title);
 
     const length = document.createElement('p');
     length.className = 'length';
-    length.textContent = 'Length: ' + hike.length;
+    length.textContent = `Length: ${hike.length}`;
     card.appendChild(length);
 
     const elevation = document.createElement('p');
     elevation.className = 'elevationGain';
-    elevation.textContent = 'Elevation Gain: ' + hike.elevationGain;
+    elevation.textContent = `Elevation Gain: ${hike.elevationGain}`;
     card.appendChild(elevation);
 
     const style = document.createElement('p');
-    style.textContent = 'Style: ' + hike.style;
+    style.textContent = `Style: ${hike.style}`;
     card.appendChild(style);
 
     const difficulty = document.createElement('p');
     difficulty.className = 'difficulty';
-    difficulty.textContent = 'Difficulty: ' + hike.difficulty;
     card.appendChild(difficulty);
 
     if (hike.image) {
@@ -152,16 +151,27 @@ function makeHikeCard(hikeId, hike) {
     return card;
 }
 
-// show all hikes on the list page.
+// show all hikes on the list page
 function showAllHikes() {
     const hikeList = document.querySelector('.hike-list');
     const hikeIds = Object.keys(hikes);
 
+    // create every card first so they can be sorted by their calculated ratings
+    const cards = [];
     for (let i = 0; i < hikeIds.length; i++) {
         const hikeId = hikeIds[i];
-        const hike = hikes[hikeId];
-        const card = makeHikeCard(hikeId, hike);
-        hikeList.appendChild(card);
+        cards.push(makeHikeCard(hikeId, hikes[hikeId]));
+    }
+
+    // a negative result puts the first card earlier; a positive result puts it later.
+    cards.sort(function (firstCard, secondCard) {
+        const firstRating = Number(firstCard.getAttribute('data-difficulty-rating'));
+        const secondRating = Number(secondCard.getAttribute('data-difficulty-rating'));
+        return firstRating - secondRating;
+    });
+
+    for (let i = 0; i < cards.length; i++) {
+        hikeList.appendChild(cards[i]);
     }
 }
 
