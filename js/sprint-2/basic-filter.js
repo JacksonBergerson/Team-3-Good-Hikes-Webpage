@@ -85,10 +85,9 @@ function filterHikes2() {
                 console.log(filterCondition);
 
 
-        if(filterCondition == [0]){
-        if(hike.classList.contains('hidden')){
-          hike.classList.toggle('hidden');
-        }}
+        if(filterCondition.length == 1){
+          hike.classList.remove('hidden');
+        }
     });
 }
 
