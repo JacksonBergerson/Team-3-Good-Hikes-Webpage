@@ -1,21 +1,21 @@
-// Sprint 2 difficulty rating system.
+// Sprint 2 difficulty rating system
 
 /*
-difficulty rating system on a 1-10 scale.
+difficulty rating system on a 1-10 scale
 1 mile = 1 pt.
 500 feet elevation gain = 1 pt.
-based on Petzoldt Energy Mile theory.
+based on Petzoldt Energy Mile theory
 */
 
 function getNumberFromClass(hikeElement, className) {
     const element = hikeElement.querySelector(`.${className}`);
     if (!element) return 0;
 
-    // remove words and units such as "miles" and "ft", leaving just the number.
+    // remove words and units such as "miles" and "ft", leaving just the number
     const numberText = element.textContent.replace(/[^0-9.]/g, '');
     const number = parseFloat(numberText);
 
-    // parseFloat returns NaN when the text does not contain a valid number.
+    // parseFloat returns NaN when the text does not contain a valid number
     if (Number.isNaN(number)) {
         return 0;
     }
@@ -27,13 +27,13 @@ function applyDifficultyMultiplier(pointCount, hike) {
     if (hike.surface) {
         /*
         hike.surface is an object where each property name is a surface and
-        its value is the percentage of the trail made up of that surface.
-        For example: { paved: 50, gravel: 50 }.
+        its value is the percentage of the trail made up of that surface
+        for example: { paved: 50, gravel: 50 }
         */
         let totalPercentage = 0;
 
-        // Add up the percentages so we can divide by their total later.
-        // A for in loop visits each property name, such as "paved" or "gravel".
+        // add up the percentages so we can divide by their total later
+        // a for in loop visits each property name, such as "paved" or "gravel"
         for (const surface in hike.surface) {
             const percentage = hike.surface[surface];
             totalPercentage += percentage;
@@ -42,12 +42,12 @@ function applyDifficultyMultiplier(pointCount, hike) {
         if (totalPercentage > 0) {
             let totalWeightedSurface = 0;
 
-            // Multiply each surface's weight by how much of the trail it covers.
+            // multiply each surface's weight by how much of the trail it covers
             for (const surface in hike.surface) {
                 const percentage = hike.surface[surface];
                 let surfaceWeight = SURFACE_WEIGHTS[surface];
 
-                // Use a neutral weight when a surface has no entry in SURFACE_WEIGHTS.
+                // use a neutral weight when a surface has no entry in SURFACE_WEIGHTS
                 if (!surfaceWeight) {
                     surfaceWeight = 1;
                 }
@@ -55,13 +55,13 @@ function applyDifficultyMultiplier(pointCount, hike) {
                 totalWeightedSurface += (surfaceWeight * percentage);
             }
 
-            // Divide by the total percentage to get the trail's average surface weight.
+            // divide by the total percentage to get the trail's average surface weight
             const averageSurfaceWeight = totalWeightedSurface / totalPercentage;
             return pointCount * averageSurfaceWeight;
         }
     }
 
-    // If surface percentages are missing, use the hike's terrain tag instead.
+    // if surface percentages are missing, use the hike's terrain tag instead
     let terrainWeight = 1;
 
     if (hike.terrain && TERRAIN_TAGS[hike.terrain] !== undefined) {
@@ -72,12 +72,12 @@ function applyDifficultyMultiplier(pointCount, hike) {
 }
 
 function applyDifficultyRating(hikeElement, hike) {
-    // Stop if there is no hike card to update.
+    // stop if there is no hike card to update
     if (!hikeElement) {
         return;
     }
 
-    // Some hike cards may not have extra hike data, so use an empty object.
+    // some hike cards may not have extra hike data, so use an empty object
     if (!hike) {
         hike = {};
     }
@@ -87,10 +87,10 @@ function applyDifficultyRating(hikeElement, hike) {
     const elevationPoints = elevationGain / 500;
     const startingPointCount = miles + elevationPoints;
 
-    // Adjust the starting score to account for the hike's surface or terrain.
+    // adjust the starting score to account for the hike's surface or terrain
     const pointCount = applyDifficultyMultiplier(startingPointCount, hike);
 
-    // Convert the effort score into a rating from 1 to 10.
+    // convert the effort score into a rating from 1 to 10
     let rating;
     switch (true) {
         case pointCount < 3:    rating = 1; break;
@@ -111,11 +111,11 @@ function applyDifficultyRating(hikeElement, hike) {
         : rating <= 8 ? 'hard'
         : 'strenuous';
 
-    // Save the rating on the card so other page features, like filtering, can use it.
+    // save the rating on the card so other page features, like filtering, can use it
     hikeElement.setAttribute('data-difficulty-rating', String(rating));
     hikeElement.setAttribute('data-difficulty-band', difficultyBand);
 
-    // Show the calculated rating on the page if this card has a difficulty label.
+    // show the calculated rating on the page if this card has a difficulty label
     const difficultyElement = hikeElement.querySelector('.difficulty');
     if (difficultyElement) {
         difficultyElement.textContent = `Difficulty: ${rating}/10`;
@@ -124,11 +124,11 @@ function applyDifficultyRating(hikeElement, hike) {
 }
 
 function applyDifficultyRatings() {
-    // Calculate a rating for every hike card on the current page.
+    // calculate a rating for every hike card on the current page
     document.querySelectorAll('.hike').forEach(applyDifficultyRating);
 }
 
-// A larger weight means the surface takes more effort to hike.
+// a larger weight means the surface takes more effort to hike
 const SURFACE_WEIGHTS = {
     paved: 1.0,
     wood: 1.0,
@@ -140,7 +140,7 @@ const SURFACE_WEIGHTS = {
     snow: 1.5
 };
 
-// Terrain weights are used as a fallback when a hike has no surface percentages.
+// terrain weights are used as a fallback when a hike has no surface percentages
 const TERRAIN_TAGS = {
     smooth: 1.0,
     moderate: 1.15,
