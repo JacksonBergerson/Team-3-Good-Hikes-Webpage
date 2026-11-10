@@ -12,7 +12,7 @@ function checkStatus1(checkbox) {
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(1), 1);
     filterCondition.splice(filterCondition.indexOf(2), 1);
-        filterHikes(filterCondition);
+        filterHikes2(filterCondition);
   }
 }
 function checkStatus3(checkbox) {
@@ -23,7 +23,7 @@ function checkStatus3(checkbox) {
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(3), 1);
     filterCondition.splice(filterCondition.indexOf(4), 1);
-        filterHikes(filterCondition);
+        filterHikes2(filterCondition);
   }
 }
 function checkStatus5(checkbox) {
@@ -34,7 +34,7 @@ function checkStatus5(checkbox) {
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(5), 1);
     filterCondition.splice(filterCondition.indexOf(6), 1);
-        filterHikes(filterCondition);
+        filterHikes2(filterCondition);
   }
 }
 function checkStatus7(checkbox) {
@@ -45,7 +45,7 @@ function checkStatus7(checkbox) {
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(7), 1);
     filterCondition.splice(filterCondition.indexOf(8), 1);
-        filterHikes(filterCondition);
+        filterHikes2(filterCondition);
   }
 }
 function checkStatus9(checkbox) {
@@ -56,7 +56,7 @@ function checkStatus9(checkbox) {
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(9), 1);
     filterCondition.splice(filterCondition.indexOf(10), 1);
-        filterHikes(filterCondition);
+        filterHikes2(filterCondition);
   }
 }
 
