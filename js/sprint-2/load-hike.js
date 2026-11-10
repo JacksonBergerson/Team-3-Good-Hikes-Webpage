@@ -92,7 +92,20 @@ if (hike) {
     document.getElementById('hikeStyle').textContent = `Style: ${hike.style}`;
     document.getElementById('hikeDifficulty').textContent = `Difficulty: ${hike.difficulty}`;
 
-    applyDifficultyRating(document.getElementById('hike-card'));
+    applyDifficultyRating(document.getElementById('hike-card'), hike);
 } else {
-    document.getElementById('hike-card').innerHTML = "<h2>Hike not found.</h2>";
+    const hikeCard = document.getElementById('hike-card');
+    if (hikeCard) {
+        hikeCard.innerHTML = "<h2>Hike not found.</h2>";
+    } else if (!hikeId) {
+        document.querySelectorAll('.hike').forEach((card) => {
+            const link = card.querySelector('a[href*="id="]');
+            if (!link) return;
+
+            const cardHikeId = new URL(link.href).searchParams.get('id');
+            if (hikes[cardHikeId]) {
+                applyDifficultyRating(card, hikes[cardHikeId]);
+            }
+        });
+    }
 }
