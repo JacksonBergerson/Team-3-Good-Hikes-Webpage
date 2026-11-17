@@ -1,6 +1,6 @@
 // sprint 2
 
-// all trails data storage for all hikes
+// all trails data storage for all hikes -- add hikes here
 const hikes = {
     "skyline-loop": {
         name: "Skyline Loop",
