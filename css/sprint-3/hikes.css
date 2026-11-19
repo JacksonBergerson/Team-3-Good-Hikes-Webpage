@@ -117,6 +117,34 @@ body {
     margin-top: 10px;
 }
 
+.guide-notes {
+    margin-top: 24px;
+    padding: 18px;
+    background-color: #ffffff;
+    border: 1px solid #e5e8e3;
+    border-radius: 12px;
+}
+
+.guide-notes h2 {
+    margin-top: 0;
+    color: #1e3f1a;
+}
+
+#guide-notes-list {
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+#guide-notes-list li {
+    padding: 14px;
+    border: 1px solid #e5e8e3;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
 .hike[data-difficulty-band="beginner"] { 
     border-left: 6px solid #2e7d32; 
 }

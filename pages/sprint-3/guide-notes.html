@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Guide Notes | GoodHikes</title>
+        <link rel="stylesheet" href="../../css/sprint-3/login.css">
+        <script defer src="/js/sprint-3/load-hike.js"></script>
+        <script defer src="/js/sprint-3/guide-notes.js"></script>
+    </head>
+    <body>
+        <main class="panel">
+            <!-- page heading and logout control -->
+            <header class="page-header">
+                <div>
+                    <a href="./home.html">&larr; Back to GoodHikes</a>
+                    <h1>Guide notes</h1>
+                    <p>Add notes for visitors planning their hikes.</p>
+                </div>
+                <button id="logout-button" class="secondary-button" type="button">Log out</button>
+            </header>
+
+            <!-- form for adding a guide note -->
+            <form id="note-form">
+                <label for="hike-id">Trail</label>
+                <!-- trail dropdown; its options are filled from the hike list by JavaScript -->
+                <select id="hike-id" name="hike-id" required>
+                    <option value="" selected disabled>Choose a trail</option>
+                </select>
+
+                <label for="note-text">Guide note</label>
+                <textarea id="note-text" name="note-text" rows="5" required maxlength="2000"></textarea>
+
+                <button type="submit">Save note</button>
+                <p id="note-message" role="status" aria-live="polite"></p>
+            </form>
+
+            <!-- saved guide notes are displayed in this section -->
+            <section aria-labelledby="saved-notes-heading">
+                <h2 id="saved-notes-heading">Saved notes</h2>
+                <ul id="saved-notes"></ul>
+            </section>
+        </main>
+    </body>
+</html>

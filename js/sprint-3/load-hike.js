@@ -1,6 +1,18 @@
 // sprint 3
 
 // all trails data storage for all hikes -- add hikes here
+/*
+template:
+"hike-name": {
+name: "Hike Name",
+length: "1.2 miles",
+elevationGain: "1,234ft",
+style: "Style",
+difficulty: "Difficulty",
+surface: {surface: 1},
+image: ""
+},
+*/
 const hikes = {
     "skyline-loop": {
         name: "Skyline Loop",
@@ -82,14 +94,14 @@ const hikes = {
         difficulty: "Easy",
         surface: {paved: 99, steps: 1},
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTA0Nzc2MDY0L2JlNmUwZDNlMzk2MDA3NWVkOGNkZDY2ZmZkZTIxY2JkLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
-    }
+    },
 };
 
 // read the "id" value from the browser's URL (e.g. ?id=skyline-loop)
 const urlParams = new URLSearchParams(window.location.search);
 const hikeId = urlParams.get('id');
 
-// show one hike on the details page.
+// show one hike on the details page
 function showHikeDetails() {
     const hike = hikes[hikeId];
     const hikeCard = document.getElementById('hike-card');
@@ -107,9 +119,52 @@ function showHikeDetails() {
     document.getElementById('hikeDifficulty').textContent = `Difficulty: ${hike.difficulty}`;
 
     applyDifficultyRating(hikeCard, hike);
+    showGuideNotes(hikeId);
 }
 
-// make one hike card for the all-hikes page.
+// load and display saved guide notes for the selected hike
+function showGuideNotes(selectedHikeId) {
+    const notesList = document.getElementById('guide-notes-list');
+    let notes;
+
+    try {
+        // read notes saved locally by the guide notes form
+        const storedNotes = localStorage.getItem('goodHikesGuideNotes');
+        notes = storedNotes ? JSON.parse(storedNotes) : [];
+
+        if (!Array.isArray(notes)) {
+            throw new Error('Saved notes are not in the expected format.');
+        }
+    } catch (error) {
+        notesList.textContent = `Unable to load guide notes: ${error.message}`;
+        return;
+    }
+
+    // keep only valid notes that belong to this hike
+    const hikeNotes = notes.filter(function (note) {
+        if (!note || typeof note.text !== 'string') {
+            return false;
+        }
+
+        return note.hikeId === selectedHikeId;
+    });
+
+    if (hikeNotes.length === 0) {
+        const emptyMessage = document.createElement('li');
+        emptyMessage.textContent = 'No guide notes have been added for this trail yet.';
+        notesList.appendChild(emptyMessage);
+        return;
+    }
+
+    // add each matching note to the trail page
+    hikeNotes.forEach(function (note) {
+        const item = document.createElement('li');
+        item.textContent = note.text;
+        notesList.appendChild(item);
+    });
+}
+
+// make one hike card for the all-hikes page
 function makeHikeCard(hikeId, hike) {
     const card = document.createElement('div');
     card.className = 'hike';
