@@ -4,6 +4,7 @@
 /*
 template:
 "hike-name": {
+park:"Park",
 name: "Hike Name",
 length: "1.2 miles",
 elevationGain: "1,234ft",
@@ -15,6 +16,7 @@ image: ""
 */
 const hikes = {
     "skyline-loop": {
+        park:"Mt Rainier",
         name: "Skyline Loop",
         length: "5.7 miles",
         elevationGain: "1,784ft",
@@ -24,6 +26,7 @@ const hikes = {
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTQxNzUxNjMzL2E1NmY0MDhiOWZiMGE5MGJiNjhlNTAwYmQ0YTg2NjdkLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
     "myrtle-falls": {
+        park:"Mt Rainier",
         name: "Myrtle Falls",
         length: "1 mile",
         elevationGain: "167ft",
@@ -33,6 +36,7 @@ const hikes = {
         image: "https://www.alltrails.com/api/alltrails/trails/10023187/profile_photo?size=larger_wide"
     },
     "pinnacle-peak": {
+        park:"Mt Rainier",
         name: "Pinnacle Peak",
         length: "3 miles",
         elevationGain: "1,581ft",
@@ -42,6 +46,7 @@ const hikes = {
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTI3NzI4NzkyLzg3YTY0ZDAyNTE3NmNhYjEyOGI2MWFkYWMzNTgwZGMxLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
     "naches-peak-loop": {
+        park:"Mt Rainier",
         name: "Naches Peak Loop",
         length: "3.5 miles",
         elevationGain: "643ft",
@@ -51,6 +56,7 @@ const hikes = {
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTMxNjcwMzk4LzdlNDkwZmY1MjY3YTUyZDIyNTJiOTNlMzA3Y2Q2MjMxLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
     "fremont-lookout": {
+        park:"Mt Rainier",
         name: "Fremont Lookout",
         length: "5.8 miles",
         elevationGain: "1,108ft",
@@ -60,6 +66,7 @@ const hikes = {
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvNzg4MjcwMjUvNTM1N2ZjNGNmZjcwNjQ3YTc1NTUyMGRiYzkxZTE0ZDguanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoiMjA0OCIsImhlaWdodCI6IjIwNDgiLCJmaXQiOiJpbnNpZGUifSwicm90YXRlIjpudWxsLCJqcGVnIjp7InRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pc2VTY2FucyI6dHJ1ZSwicXVhbnRpc2F0aW9uVGFibGUiOjN9fX0="
     },
     "burrough-mountain": {
+        park:"Mt Rainier",
         name: "Burrough Mountain",
         length: "8.9 miles",
         elevationGain: "2,467ft",
@@ -69,6 +76,7 @@ const hikes = {
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMzAwMjY1ODUvYzk4NTg3YzIzMDg2OTlkMDVjNWM5YmY2ZDBhOGUzMzAuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoiMjA0OCIsImhlaWdodCI6IjIwNDgiLCJmaXQiOiJpbnNpZGUifSwicm90YXRlIjpudWxsLCJqcGVnIjp7InRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pc2VTY2FucyI6dHJ1ZSwicXVhbnRpc2F0aW9uVGFibGUiOjN9fX0="
     },
     "high-rock-lookout": {
+        park:"Mt Rainier",
         name: "High Rock Lookout",
         length: "3.4 miles",
         elevationGain: "1,348ft",
@@ -78,6 +86,7 @@ const hikes = {
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvNjEzNTE4MTkvODY5ZDdhYjYyMWQ5MjA0Mzc5N2IzMDVjMjMwNWRkNmYuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoiMjA0OCIsImhlaWdodCI6IjIwNDgiLCJmaXQiOiJpbnNpZGUifSwicm90YXRlIjpudWxsLCJqcGVnIjp7InRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pc2VTY2FucyI6dHJ1ZSwicXVhbnRpc2F0aW9uVGFibGUiOjN9fX0="
     },
     "narada-falls": {
+        park:"Mt Rainier",
         name: "Narada Falls",
         length: "0.2 miles",
         elevationGain: "78ft",
@@ -87,6 +96,7 @@ const hikes = {
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvNjM1NTQxOTkvNjlkNjhiMzQ2NDA2NmJmMDI2MmRlMDU0ZWRhNDRhMmEuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoiMjA0OCIsImhlaWdodCI6IjIwNDgiLCJmaXQiOiJpbnNpZGUifSwicm90YXRlIjpudWxsLCJqcGVnIjp7InRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pc2VTY2FucyI6dHJ1ZSwicXVhbnRpc2F0aW9uVGFibGUiOjN9fX0="
     },
     "nisqually-vista-trail": {
+        park:"Mt Rainier",
         name: "Nisqually Vista Trail",
         length: "1.1 miles",
         elevationGain: "180ft",
@@ -94,6 +104,196 @@ const hikes = {
         difficulty: "Easy",
         surface: {paved: 99, steps: 1},
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTA0Nzc2MDY0L2JlNmUwZDNlMzk2MDA3NWVkOGNkZDY2ZmZkZTIxY2JkLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
+    },
+     "madison-falls-trail": {
+        park:"Olympic",
+        name: "Madison Falls Trail",
+        length: "0.2 miles",
+        elevationGain: "19ft",
+        style: "Out and Back",
+        difficulty: "Easy",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+         "devils-punchbowl": {
+        park:"Olympic",
+        name: "Devil's Punchbowl",
+        length: "2.4 miles",
+        elevationGain: "127ft",
+        style: "Out and Back",
+        difficulty: "Easy",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+         "hurricane-hill": {
+        park:"Olympic",
+        name: "Hurricane Hill",
+        length: "3.5 miles",
+        elevationGain: "823ft",
+        style: "Out and Back",
+        difficulty: "Moderate",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+         "hall-of-mosses": {
+        park:"Olympic",
+        name: "Hall of Mosses",
+        length: "1.1 miles",
+        elevationGain: "75ft",
+        style: "Loop",
+        difficulty: "Easy",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+         "rialto-beach-trail": {
+        park:"Olympic",
+        name: "Rialto Beach Trail",
+        length: "13.1 miles",
+        elevationGain: "154ft",
+        style: "Out and Back",
+        difficulty: "Moderate",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+         "grand-lake": {
+        park:"Olympic",
+        name: "Grand Lake",
+        length: "7.7 miles",
+        elevationGain: "2,427ft",
+        style: "Out and Back",
+        difficulty: "Hard",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+         "mount-storm-king": {
+        park:"Olympic",
+        name: "Madison Falls Trail",
+        length: "4.4 miles",
+        elevationGain: "2,129ft",
+        style: "Out and Back",
+        difficulty: "Strenuous",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+         "mineral-creek-falls": {
+        park:"Olympic",
+        name: "Mineral Creek Falls",
+        length: "5.6 miles",
+        elevationGain: "351ft",
+        style: "Out and Back",
+        difficulty: "Easy",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+         "kalaloch-beach": {
+        park:"Olympic",
+        name: "Kalaloch Beach",
+        length: "3 miles",
+        elevationGain: "26ft",
+        style: "Out and Back",
+        difficulty: "Easy",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "washington-pass-overlook-trail": {
+        park:"North Cascades",
+        name: "Washington Pass Overlook Trail",
+        length: "0.3 miles",
+        elevationGain: "32ft",
+        style: "Loop",
+        difficulty: "Moderate",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "blue-lake-trail": {
+        park:"North Cascades",
+        name: "Blue Lake Trail",
+        length: "4.6 miles",
+        elevationGain: "889ft",
+        style: "Out and Back",
+        difficulty: "Moderate",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "rainy-lake-trail": {
+        park:"North Cascades",
+        name: "Rainy Lake Trail",
+        length: "2 miles",
+        elevationGain: "68ft",
+        style: "Out and Back",
+        difficulty: "Easy",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "maple-pass-trail": {
+        park:"North Cascades",
+        name: "Maple Pass Trail",
+        length: "6.8 miles",
+        elevationGain: "2,125ft",
+        style: "Loop",
+        difficulty: "Hard",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "diablo-lake-overlook": {
+        park:"North Cascades",
+        name: "Diablo Lake Overlook",
+        length: "0.2 miles",
+        elevationGain: "6ft",
+        style: "Out and Back",
+        difficulty: "Easy",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "diablo-lake-trail": {
+        park:"North Cascades",
+        name: "Diablo Lake Trail",
+        length: "7.5 miles",
+        elevationGain: "1,617ft",
+        style: "Out and Back",
+        difficulty: "Moderate",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "sourdough-mountain-lookout": {
+        park:"North Cascades",
+        name: "Sourdoug Mountain Lookout",
+        length: "10.5 miles",
+        elevationGain: "5,075ft",
+        style: "Out and Back",
+        difficulty: "Hard",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "thornton-lakes-trail": {
+        park:"North Cascades",
+        name: "Thornton Lakes Trail",
+        length: "9.5 miles",
+        elevationGain: "2,933ft",
+        style: "Out and Back",
+        difficulty: "Strenuous",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "lake-ann-trail": {
+        park:"North Cascades",
+        name: "Lake Ann Trail",
+        length: "3.5 miles",
+        elevationGain: "639ft",
+        style: "Out and Back",
+        difficulty: "Moderate",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+    },
+             "thunder-knob-trail": {
+        park:"North Cascades",
+        name: "Thunder Knob Trail",
+        length: "3.3 miles",
+        elevationGain: "666ft",
+        style: "Loop",
+        difficulty: "Moderate",
+        surface: {paved: 0, steps: 0}, //placeholder numbers
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
     },
 };
 
@@ -112,6 +312,7 @@ function showHikeDetails() {
     }
 
     document.title = hike.name;
+    document.getElementById('hikePark').textContent = hike.park;
     document.getElementById('hikeName').textContent = hike.name;
     document.getElementById('hikeLength').textContent = `Length: ${hike.length}`;
     document.getElementById('hikeElevation').textContent = `Elevation Gain: ${hike.elevationGain}`;
@@ -176,6 +377,11 @@ function makeHikeCard(hikeId, hike) {
     title.appendChild(link);
     card.appendChild(title);
 
+    const park = document.createElement('p');
+    park.className = 'park';
+    park.textContent = `park: ${hike.park}`;
+    card.appendChild(park);
+    
     const length = document.createElement('p');
     length.className = 'length';
     length.textContent = `Length: ${hike.length}`;
