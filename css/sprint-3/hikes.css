@@ -104,7 +104,8 @@ body {
 }
 
 .hike p.length,
-.hike p.elevationGain {
+.hike p.elevationGain,
+.hike p.park {
     color: #1d241c;
     font-weight: 500;
 }
