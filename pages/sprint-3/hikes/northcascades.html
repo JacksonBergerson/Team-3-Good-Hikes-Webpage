@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>North Cascades</title>
+        <link rel="stylesheet" href="/css/sprint-3/hikes.css">
+        <link rel="stylesheet" href="/css/sprint-3/basic-filter.css">
+        <script defer src="/js/sprint-3/difficulty-system.js"></script>
+        <script defer src="/js/sprint-3/load-hike.js"></script>
+        <script defer src="/js/sprint-3/basic-filter.js"></script>
+    </head>
+    <body>
+        <a href="../home.html">Home</a>
+        <div class="filterButtonDiv">Filter By:
+            <input type="checkbox" onchange="checkStatus1(this)"> Beginner (1-2)
+            <input type="checkbox" onchange="checkStatus3(this)"> Easy (3-4)
+            <input type="checkbox" onchange="checkStatus5(this)"> Moderate (5-6)
+            <input type="checkbox" onchange="checkStatus7(this)"> Hard (7-8)
+            <input type="checkbox" onchange="checkStatus9(this)"> Strenuous (9-10)
+        </div>
+        <div class="hike-list"></div>
+    </body>
+</html>
