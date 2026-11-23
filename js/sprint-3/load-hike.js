@@ -113,7 +113,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Easy",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://www.alltrails.com/mugen/image/explore?url=https%3A%2F%2Fimages.alltrails.com%2FeyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTAyMDEyNTkwLzQyZWU4ZThmYmNhZDdmNmZjY2EzMTgwMGQ4Yjg4OTQyLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6Ijc0NCIsImhlaWdodCI6IjQxOSIsImZpdCI6ImNvdmVyIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19&w=1920&q=75" 
     },
          "devils-punchbowl": {
         park:"Olympic",
@@ -123,7 +123,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Easy",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://www.alltrails.com/mugen/image/explore?url=https%3A%2F%2Fimages.alltrails.com%2FeyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTA3NjkwOTc5LzE1M2ZmMmE1M2U3ODcyNGY1ZTUwZjA5NDBjNWRlZGZkLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19&w=1920&q=75"
     },
          "hurricane-hill": {
         park:"Olympic",
@@ -133,7 +133,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Moderate",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTA2ODA2MzEwLzJlZWM1NTg5NWU1MGUxMTJlOWY4MjBhZGViZWYxMDgwLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
          "hall-of-mosses": {
         park:"Olympic",
@@ -143,7 +143,7 @@ const hikes = {
         style: "Loop",
         difficulty: "Easy",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTEyMzQ1Nzk3L2RjMWY2MjExODQyZDI1ZDA2MDRkZGM5MDIyNTY0YjllLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
          "rialto-beach-trail": {
         park:"Olympic",
@@ -153,7 +153,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Moderate",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTI5MTYyMjM3LzM4ZmRkMzcxODU1MjI0ZTU3OTNhYWE5OTUzMjQxYWJiLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
          "grand-lake": {
         park:"Olympic",
@@ -163,7 +163,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Hard",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTM5NjY3NzY1LzYxNWJiYjlhZGVhZjUxODk1Yzk5NDk4ZDdmOTIzMDIzLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
          "mount-storm-king": {
         park:"Olympic",
@@ -173,7 +173,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Strenuous",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTAxODAyNTQxL2RjY2EzNTI0NTE2MDQ0OThkMGE1MzUwNmJmMmY3MWViLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
          "mineral-creek-falls": {
         park:"Olympic",
@@ -183,7 +183,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Easy",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTAwMjE2MTY3LzU5MGMxZTgxMmQ5MmYzZjg1NmYxODc1ZWJjZTM1NjAyLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
          "kalaloch-beach": {
         park:"Olympic",
@@ -193,7 +193,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Easy",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMjIyODc0NDEvYmIwYjUzYmFjODQ0YzQ3YTgyZmJlMWQ4ODgxYjI3MWYuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoiMjA0OCIsImhlaWdodCI6IjIwNDgiLCJmaXQiOiJpbnNpZGUifSwicm90YXRlIjpudWxsLCJqcGVnIjp7InRyZWxsaXNRdWFudGlzYXRpb24iOnRydWUsIm92ZXJzaG9vdERlcmluZ2luZyI6dHJ1ZSwib3B0aW1pc2VTY2FucyI6dHJ1ZSwicXVhbnRpc2F0aW9uVGFibGUiOjN9fX0="
     },
              "washington-pass-overlook-trail": {
         park:"North Cascades",
@@ -203,7 +203,7 @@ const hikes = {
         style: "Loop",
         difficulty: "Moderate",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTA0MDgwNjk0Lzc1MGExMGJkOWQ3ZjFmYTc2ZWZmMGQxODY5MWZiZGZiLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
              "blue-lake-trail": {
         park:"North Cascades",
@@ -213,7 +213,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Moderate",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTA4MjA3MDg2LzE1YTIzZjliMmM5ZTI0ZDhkNDc3NDNhYzBiZWEzYzBhLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
              "rainy-lake-trail": {
         park:"North Cascades",
@@ -223,7 +223,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Easy",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTMzMjIyODU0LzE1ODQwZDMwNGJjMTYzMThkMDIxNmRjY2E0ZjhhZTgyLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
              "maple-pass-trail": {
         park:"North Cascades",
@@ -233,7 +233,7 @@ const hikes = {
         style: "Loop",
         difficulty: "Hard",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTM1MDkxNzc3LzUzMmRkOGJhMGM5OTQzOWMwZDU4YTQxNDIyZTYwNzkzLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
              "diablo-lake-overlook": {
         park:"North Cascades",
@@ -243,7 +243,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Easy",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTM5NTY2NzM5LzEwOGM5ZTNjMzE5NTYwZGY0YTI5ZjM5M2FlODZmY2FkLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
              "diablo-lake-trail": {
         park:"North Cascades",
@@ -253,17 +253,17 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Moderate",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTAxMzY3NjU0L2NlMGRhMmQzNGVjN2JlZmMzMTFiYTQ3MDM1MjI5MGU5LmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
              "sourdough-mountain-lookout": {
         park:"North Cascades",
-        name: "Sourdoug Mountain Lookout",
+        name: "Sourdough Mountain Lookout",
         length: "10.5 miles",
         elevationGain: "5,075ft",
         style: "Out and Back",
         difficulty: "Hard",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTM0MzkzMzc1L2Y4YzM5MjNkNzNiYzgyYjU4YTBiN2Y5MmNkZTc3ZjQ4LmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
              "thornton-lakes-trail": {
         park:"North Cascades",
@@ -273,7 +273,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Strenuous",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTI4Nzg0NjI4L2IzODUyNWIwNTkyYzVjOTBjYWFjNGYyM2M3ZDg0ZDRkLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
              "lake-ann-trail": {
         park:"North Cascades",
@@ -283,7 +283,7 @@ const hikes = {
         style: "Out and Back",
         difficulty: "Moderate",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTM2ODIxNTM5L2UwOWRiZWQ4M2RiZWIxOTI2ZDJjYjdlZWQ0NjU4YjcyLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
              "thunder-knob-trail": {
         park:"North Cascades",
@@ -293,7 +293,7 @@ const hikes = {
         style: "Loop",
         difficulty: "Moderate",
         surface: {paved: 0, steps: 0}, //placeholder numbers
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtwhYixuoAq7vzxthsXs4PDHcSbXstvq0U-AWQSa06VQ&s=10"
+        image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTAxMDg1MDQ5L2IxZDk2MDJiODNjMTI2NTNjMDdhOWIzMGMxYTQyM2E2LmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
 };
 
@@ -318,6 +318,7 @@ function showHikeDetails() {
     document.getElementById('hikeElevation').textContent = `Elevation Gain: ${hike.elevationGain}`;
     document.getElementById('hikeStyle').textContent = `Style: ${hike.style}`;
     document.getElementById('hikeDifficulty').textContent = `Difficulty: ${hike.difficulty}`;
+    document.getElementById('hikeImage').src = hike.image;
 
     applyDifficultyRating(hikeCard, hike);
     showGuideNotes(hikeId);
