@@ -4,6 +4,37 @@
     box-sizing: border-box;
 }
 
+/* Shared difficulty scale colors for both hike cards and filter checkboxes */
+[data-difficulty-band="beginner"] {
+    --band-color: #2e7d32;
+    --band-bg: #e8f5e9;
+    --band-text: #2e7d32;
+}
+
+[data-difficulty-band="easy"] {
+    --band-color: #0284c7;
+    --band-bg: #e0f2fe;
+    --band-text: #0369a1;
+}
+
+[data-difficulty-band="moderate"] {
+    --band-color: #d97706;
+    --band-bg: #fef3c7;
+    --band-text: #b45309;
+}
+
+[data-difficulty-band="hard"] {
+    --band-color: #ea580c;
+    --band-bg: #ffedd5;
+    --band-text: #c2410c;
+}
+
+[data-difficulty-band="strenuous"] {
+    --band-color: #be123c;
+    --band-bg: #ffe4e6;
+    --band-text: #be123c;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f6f7f5;
@@ -14,40 +45,102 @@ body {
     margin-left: auto;
     margin-right: auto;
     line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Top navigation link ("Home" / "Back to all hikes") */
+body > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    background-color: #ffffff;
+    color: #1e3f1a;
+    border: 1px solid #d4dad1;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+body > a:hover {
+    background-color: #2d5a27;
+    border-color: #24491f;
+    color: #ffffff;
 }
 
 .filterButtonDiv {
     background-color: #ffffff;
     border: 1px solid #e2e5e1;
     border-radius: 12px;
-    padding: 14px 18px;
+    padding: 16px 18px;
     margin-bottom: 28px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    font-size: 15px;
 }
 
-.filterButton {
-    background-color: #f0f2ee;
-    color: #334033;
-    border: 1px solid #d4dad1;
+.filter-label {
+    font-weight: 700;
+    color: #1e3f1a;
+    margin-right: 4px;
+}
+
+.filter-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1.5px solid #d4dad1;
+    border-left: 5px solid var(--band-color, #2d5a27);
     border-radius: 8px;
-    padding: 8px 16px;
+    background-color: #ffffff;
+    color: var(--band-text, #334033);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    user-select: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-.filterButton:hover {
-    background-color: #2d5a27;
-    color: #ffffff;
-    border-color: #24491f;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(45, 90, 39, 0.2);
+.filter-option:has(input:checked) {
+    background-color: var(--band-bg, #e8f5e9);
+    border-color: var(--band-color, #2d5a27);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
+.filter-option:has(input:focus-visible) {
+    outline: 2px solid var(--band-color, #2d5a27);
+    outline-offset: 2px;
+}
+
+.filter-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--band-color, #2d5a27);
+    flex-shrink: 0;
+}
+
+/* Fallback color/size if any page still has unwrapped checkboxes */
+.filterButtonDiv > input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.filterButtonDiv > input[type="checkbox"]:nth-of-type(1) { accent-color: #2e7d32; }
+.filterButtonDiv > input[type="checkbox"]:nth-of-type(2) { accent-color: #0284c7; }
+.filterButtonDiv > input[type="checkbox"]:nth-of-type(3) { accent-color: #d97706; }
+.filterButtonDiv > input[type="checkbox"]:nth-of-type(4) { accent-color: #ea580c; }
+.filterButtonDiv > input[type="checkbox"]:nth-of-type(5) { accent-color: #be123c; }
 
 .hike-list {
     display: grid;
@@ -67,9 +160,17 @@ body {
     overflow: hidden;
 }
 
-.hike:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+@media (hover: hover) {
+    .filter-option:hover {
+        background-color: var(--band-bg, #f0f2ee);
+        border-color: var(--band-color, #2d5a27);
+        transform: translateY(-1px);
+    }
+
+    .hike-list .hike:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
 }
 
 .hike img {
@@ -81,14 +182,27 @@ body {
     background-color: #e8eae6;
 }
 
-.hike strong a {
+#hike-card img {
+    max-height: 460px;
+}
+
+.hike > strong {
     color: #1e3f1a;
-    text-decoration: none;
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 1.3;
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+}
+
+#hike-card > strong {
+    font-size: 26px;
+}
+
+.hike strong a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
     transition: color 0.15s ease;
 }
 
@@ -98,8 +212,8 @@ body {
 }
 
 .hike p {
-    margin: 4px 0;
-    font-size: 14px;
+    margin: 5px 0;
+    font-size: 15px;
     color: #556052;
 }
 
@@ -112,7 +226,7 @@ body {
 
 .hike p.difficulty {
     font-weight: 700;
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-top: 10px;
@@ -121,7 +235,7 @@ body {
 .weather,
 .guide-notes {
     margin-top: 24px;
-    padding: 18px;
+    padding: 20px;
     background-color: #ffffff;
     border: 1px solid #e5e8e3;
     border-radius: 12px;
@@ -130,7 +244,14 @@ body {
 .weather h2,
 .guide-notes h2 {
     margin-top: 0;
+    margin-bottom: 10px;
     color: #1e3f1a;
+    font-size: 22px;
+}
+
+.weather p {
+    margin: 0;
+    font-size: 15px;
 }
 
 #guide-notes-list {
@@ -144,43 +265,17 @@ body {
     padding: 14px;
     border: 1px solid #e5e8e3;
     border-radius: 8px;
+    font-size: 15px;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
 
-.hike[data-difficulty-band="beginner"] { 
-    border-left: 6px solid #2e7d32; 
-}
-.hike[data-difficulty-band="beginner"] p.difficulty { 
-    color: #2e7d32; 
+.hike[data-difficulty-band] {
+    border-left: 6px solid var(--band-color);
 }
 
-.hike[data-difficulty-band="easy"] { 
-    border-left: 6px solid #0284c7; 
-}
-.hike[data-difficulty-band="easy"] p.difficulty { 
-    color: #0284c7; 
-}
-
-.hike[data-difficulty-band="moderate"] { 
-    border-left: 6px solid #d97706; 
-}
-.hike[data-difficulty-band="moderate"] p.difficulty { 
-    color: #d97706; 
-}
-
-.hike[data-difficulty-band="hard"] { 
-    border-left: 6px solid #ea580c; 
-}
-.hike[data-difficulty-band="hard"] p.difficulty { 
-    color: #ea580c; 
-}
-
-.hike[data-difficulty-band="strenuous"] { 
-    border-left: 6px solid #be123c; 
-}
-.hike[data-difficulty-band="strenuous"] p.difficulty { 
-    color: #be123c; 
+.hike[data-difficulty-band] p.difficulty {
+    color: var(--band-color);
 }
 
 @media (max-width: 640px) {
@@ -188,20 +283,86 @@ body {
         padding: 16px 12px;
     }
 
-    .hike-list {
-        grid-template-columns: 1fr;
-        gap: 14px;
+    body > a {
+        font-size: 17px;
+        padding: 12px 18px;
+        min-height: 46px;
+        margin-bottom: 16px;
     }
 
     .filterButtonDiv {
-        gap: 8px;
-        padding: 12px;
+        gap: 10px;
+        padding: 14px;
+        margin-bottom: 22px;
+        font-size: 17px;
     }
 
-    .filterButton {
-        flex: 1 1 calc(50% - 8px);
-        text-align: center;
-        padding: 10px 8px;
-        font-size: 14px;
+    .filter-label {
+        width: 100%;
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+
+    .filter-option {
+        flex: 1 1 auto;
+        min-height: 48px;
+        padding: 12px 12px;
+        font-size: 16px;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+    .filter-option input[type="checkbox"],
+    .filterButtonDiv > input[type="checkbox"] {
+        width: 21px;
+        height: 21px;
+    }
+
+    .hike-list {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .hike {
+        padding: 20px;
+    }
+
+    .hike > strong {
+        font-size: 23px;
+        margin-bottom: 10px;
+    }
+
+    #hike-card > strong {
+        font-size: 26px;
+    }
+
+    .hike p {
+        font-size: 17px;
+        margin: 6px 0;
+    }
+
+    .hike p.difficulty {
+        font-size: 16px;
+        margin-top: 12px;
+    }
+
+    .weather,
+    .guide-notes {
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .weather h2,
+    .guide-notes h2 {
+        font-size: 22px;
+    }
+
+    .weather p,
+    #guide-notes-list li {
+        font-size: 16px;
+    }
+
+    #guide-notes-list li {
+        padding: 16px;
     }
 }
