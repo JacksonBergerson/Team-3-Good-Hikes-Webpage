@@ -380,7 +380,7 @@ function makeHikeCard(hikeId, hike) {
 
     const park = document.createElement('p');
     park.className = 'park';
-    park.textContent = `park: ${hike.park}`;
+    park.textContent = `Park: ${hike.park}`;
     card.appendChild(park);
     
     const length = document.createElement('p');
