@@ -118,6 +118,7 @@ body {
     margin-top: 10px;
 }
 
+.weather,
 .guide-notes {
     margin-top: 24px;
     padding: 18px;
@@ -126,6 +127,7 @@ body {
     border-radius: 12px;
 }
 
+.weather h2,
 .guide-notes h2 {
     margin-top: 0;
     color: #1e3f1a;
