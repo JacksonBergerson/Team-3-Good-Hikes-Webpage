@@ -12,13 +12,23 @@
         <script defer src="/js/sprint-3/basic-filter.js"></script>
     </head>
     <body>
-        <a href="./home.html">Home</a>
-        <div class="filterButtonDiv">Filter By:
-            <input type="checkbox" onchange="checkStatus1(this)"> Beginner (1-2)
-            <input type="checkbox" onchange="checkStatus3(this)"> Easy (3-4)
-            <input type="checkbox" onchange="checkStatus5(this)"> Moderate (5-6)
-            <input type="checkbox" onchange="checkStatus7(this)"> Hard (7-8)
-            <input type="checkbox" onchange="checkStatus9(this)"> Strenuous (9-10)
+            <div class="filterButtonDiv">
+            <span class="filter-label">Filter By:</span>
+            <label class="filter-option" data-difficulty-band="beginner">
+                <input type="checkbox" onchange="checkStatus1(this)"> Beginner (1-2)
+            </label>
+            <label class="filter-option" data-difficulty-band="easy">
+                <input type="checkbox" onchange="checkStatus3(this)"> Easy (3-4)
+            </label>
+            <label class="filter-option" data-difficulty-band="moderate">
+                <input type="checkbox" onchange="checkStatus5(this)"> Moderate (5-6)
+            </label>
+            <label class="filter-option" data-difficulty-band="hard">
+                <input type="checkbox" onchange="checkStatus7(this)"> Hard (7-8)
+            </label>
+            <label class="filter-option" data-difficulty-band="strenuous">
+                <input type="checkbox" onchange="checkStatus9(this)"> Strenuous (9-10)
+            </label>
         </div>
         <div class="hike-list"></div>
     </body>
