@@ -1,0 +1,42 @@
+<!-- Sprint 2 -->
+<!-- Sprint 3 -->
+
+<!--
+    This page is the template/layout for every single hike that is
+    filled in with details from load-hike.js.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="page-title">Hike Details</title>
+        <link rel="stylesheet" href="hikes.css">
+        <script defer src="difficulty-system.js"></script>
+        <script defer src="load-hike.js"></script>
+    </head>
+    <body>
+        <a href="hikes.html">&larr; Back to all hikes</a>
+
+        <div class="hike" id="hike-card">
+            <strong id="hikeName">Loading...</strong>
+            <p class="park" id="hikePark">Park: </p>
+            <p class="length" id="hikeLength">Length: </p>
+            <p class="elevationGain" id="hikeElevation">Elevation Gain: </p>
+            <p id="hikeStyle">Style: </p>
+            <p class="difficulty" id="hikeDifficulty">Difficulty: </p>
+            <img src= "" class="image" id="hikeImage"> 
+        </div>
+
+        <section class="weather" aria-labelledby="weather-heading">
+            <h2 id="weather-heading">Weather</h2>
+            <p id="weather-status">Weather information for this hike will appear here soon.</p>
+        </section>
+
+        <section class="guide-notes" aria-labelledby="guide-notes-heading">
+            <h2 id="guide-notes-heading">Guide notes</h2>
+            <ul id="guide-notes-list"></ul>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Difficulty System</title>
+        <link rel="stylesheet" href="/css/sprint-3/home.css">
+    </head>
+    <body>
+        <main class="panel">
+        <a class="back-button" href="./home.html">&larr; Back to Home</a>
+        <h1>Our Difficulty Rating System</h1>
+        <p>
+            Our difficulty system is based off of the <strong>Petzoldt Energy Mile theory</strong> which, in the simplest terms for our purposes,
+            means that for each 500ft you ascend, you are exerting yourself the same amount as if you walked one mile
+            on flat ground. Our system is on a 1-10 scale for easy comprehension and considers several factors. Under the hood is an effort-based points system, with a mile and 500ft of ascension each being
+            worth 1 effort point, with different point thresholds for where the hikes land on the 1-10 scale. <br>
+            For example, a 5/10 difficulty hike requires an effort score of 9 or 10 points respectively, which could correlate to a hike like
+            <strong><a href="./hike-details.html?id=skyline-loop">Skyline Loop</a></strong>,
+            which has a length around 6 miles and an elevation gain of around 1,500ft. Additionally, trail terrain and current weather conditions multiply the effort score.
+        </p>
+        <p>
+            Current weather data comes from OpenWeatherMap using each hike's trailhead coordinates. Rain, snow, high wind,
+            extreme temperatures, and high humidity increase the difficulty multiplier, up to 2x. Temperature is measured in Fahrenheit and wind speed in miles per hour.
+        </p>
+        <h2>Remember these difficulty factors with an acronym:<br> Follow the PATH</h2>
+        <ul>
+            <li><strong>P</strong>aces</li>
+            <li><strong>A</strong>scent</li>
+            <li><strong>T</strong>errain</li>
+            <li><strong>H</strong>eadwinds (Weather)</li>
+        </ul>
+    </main>
+    </body>
+</html>

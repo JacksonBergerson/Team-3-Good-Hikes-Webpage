@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Client Login | GoodHikes</title>
+        <link rel="stylesheet" href="/css/sprint-3/login.css">
+        <script defer src="/js/sprint-3/client-login.js"></script>
+    </head>
+    <body>
+        <main class="panel">
+            <a href="./home.html">&larr; Back to GoodHikes</a>
+            <h1>Client login</h1>
+            <p>Sign in to add guide notes.</p>
+            <form id="login-form">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" autocomplete="username" required>
+
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+                <button type="submit">Log in</button>
+                <p id="login-message" role="alert" aria-live="polite"></p>
+            </form>
+        </main>
+    </body>
+</html>

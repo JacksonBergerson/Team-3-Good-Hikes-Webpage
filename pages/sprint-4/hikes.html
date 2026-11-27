@@ -1,0 +1,43 @@
+<!-- Sprint 2 -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hikes</title>
+        <link rel="stylesheet" href="hikes.css">
+        <link rel="stylesheet" href="basic-filter.css">
+        <script defer src="difficulty-system.js"></script>
+        <script defer src="load-hike.js"></script>
+        <script defer src="basic-filter.js"></script>
+    </head>
+    <body>
+            <div class="filterButtonDiv">
+            <span class="filter-label">Filter By:</span>
+            <label class="filter-option" data-difficulty-band="beginner">
+                <input type="checkbox" onchange="checkStatus1(this)"> Beginner (1-2)
+            </label>
+            <label class="filter-option" data-difficulty-band="easy">
+                <input type="checkbox" onchange="checkStatus3(this)"> Easy (3-4)
+            </label>
+            <label class="filter-option" data-difficulty-band="moderate">
+                <input type="checkbox" onchange="checkStatus5(this)"> Moderate (5-6)
+            </label>
+            <label class="filter-option" data-difficulty-band="hard">
+                <input type="checkbox" onchange="checkStatus7(this)"> Hard (7-8)
+            </label>
+            <label class="filter-option" data-difficulty-band="strenuous">
+                <input type="checkbox" onchange="checkStatus9(this)"> Strenuous (9-10)
+            </label>
+                <input type="checkbox" onchange="filterHikes3()"> Make query based on selected checkboxes
+        </div>
+        <div class="hike-list"></div>
+        
+        <div class = "basic-database-query">
+<br><br>
+The following line is the result of a database query, use this to query in the proper spots for the hike pages.<br>
+
+        </div>
+
+    </body>
+</html>
