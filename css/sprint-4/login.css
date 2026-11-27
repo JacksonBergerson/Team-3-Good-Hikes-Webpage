@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 32px 16px;
+    background-color: #f6f7f5;
+    color: #24292e;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.panel {
+    max-width: 560px;
+    margin: 32px auto;
+    padding: 28px;
+    background-color: #ffffff;
+    border: 1px solid #e2e5e1;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+a {
+    color: #2d5a27;
+}
+
+h1 {
+    margin-bottom: 4px;
+    color: #1e3f1a;
+}
+
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+form {
+    display: grid;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd2c8;
+    border-radius: 6px;
+    color: inherit;
+    font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #3b7a34;
+    outline-offset: 1px;
+}
+
+button {
+    justify-self: start;
+    padding: 10px 16px;
+    border: 1px solid #24491f;
+    border-radius: 6px;
+    background-color: #2d5a27;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #24491f;
+}
+
+.secondary-button {
+    border-color: #d4dad1;
+    background-color: #f0f2ee;
+    color: #334033;
+}
+
+.secondary-button:hover {
+    background-color: #e2e8df;
+}
+
+#login-message,
+#note-message {
+    min-height: 1.5em;
+    margin: 0;
+}
+
+#saved-notes {
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+#saved-notes li {
+    padding: 14px;
+    border: 1px solid #e2e5e1;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+#saved-notes li p {
+    margin: 6px 0 0;
+    white-space: pre-wrap;
+}
+
+@media (max-width: 480px) {
+    .panel {
+        margin: 8px auto;
+        padding: 20px;
+    }
+
+    .page-header {
+        flex-direction: column;
+    }
+}
