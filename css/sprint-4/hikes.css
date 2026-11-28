@@ -79,8 +79,13 @@ body > a:hover {
     padding: 16px 18px;
     margin-bottom: 28px;
     display: flex;
+    /* ============================================================= */
+    /*commenting out 2 things for sprint-4:
     flex-wrap: wrap;
-    align-items: center;
+    align-items: center;*/
+    /*adding 2 things for sprint-4: */
+    flex-direction: column;
+    align-items: stretch;
     gap: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     font-size: 15px;
@@ -119,6 +124,76 @@ body > a:hover {
     outline: 2px solid var(--band-color, #2d5a27);
     outline-offset: 2px;
 }
+
+/* ============================================================= */
+/*new css for sprint-4:
+
+/* Arrange each of the 4 filter rows horizontally */
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Style dropdowns, number boxes, and keyword input inside filter pills */
+.filter-option select,
+.filter-option input[type="number"],
+.filter-option input[type="text"] {
+    font-family: inherit;
+    font-size: 14px;
+    color: #1d241c;
+    background-color: #f6f7f5;
+    border: 1px solid #c5cec2;
+    border-radius: 6px;
+    padding: 5px 8px;
+}
+
+/* Keep the 4 min/max distance and elevation boxes compact so they fit cleanly on Row 3 */
+.filter-option input[type="number"] {
+    width: 80px;
+}
+
+.filter-option input[type="text"] {
+    width: 210px;
+}
+
+/* Style the Apply Filters and Reset buttons on Row 4 to match your site theme */
+.filter-row button {
+    padding: 9px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Primary button ("Apply Filters") */
+.filter-row button:first-of-type {
+    background-color: #2d5a27;
+    border: 1px solid #24491f;
+    color: #ffffff;
+}
+
+.filter-row button:first-of-type:hover {
+    background-color: #1e3f1a;
+}
+
+/* Secondary button ("Reset") */
+.filter-row button:last-of-type {
+    background-color: #ffffff;
+    border: 1px solid #d4dad1;
+    color: #1e3f1a;
+}
+
+.filter-row button:last-of-type:hover {
+    background-color: #f0f2ee;
+    border-color: #2d5a27;
+}
+
+
+/* ============================================================= */
 
 .filter-option input[type="checkbox"] {
     width: 18px;
