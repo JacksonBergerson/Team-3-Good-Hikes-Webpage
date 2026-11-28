@@ -91,8 +91,52 @@ function filterHikes2() {
     });
 }
 
+
+async function filterHikes3() {
+  // Get the comma-separated numbers (e.g., "3,4,7,8")
+  const ratings = filterCondition.slice(1).join(',');
+
+  // Send those ratings to get_data.php and wait for the database results
+  const response = await fetch(`get_data.php?ratings=${encodeURIComponent(ratings)}`);
+  const data = await response.json();
+
+  console.log('Filtered hikes from DB:', data);
+  console.log(filterCondition);
+
+  // Show or hide each hike card on the page
+  document.querySelectorAll('.hike').forEach((hike) => {
+    if (hike.classList.contains('Ignore')) return;
+
+    // Show all hikes if no filter is active
+    if (filterCondition.length == 1) {
+      hike.classList.remove('hidden');
+      return;
+    }
+
+    // Read the rating saved on this card and toggle visibility
+    const rating = Number(hike.getAttribute('data-difficulty-rating'));
+    const matchesFilter = determineRating(rating, filterCondition);
+    hike.classList.toggle('hidden', !matchesFilter);
+  });
+}
+
+
+
+/*
 function filterHikes3() {
-//Get contents of the array (ex: 3,4,7,8) without ()s but with commas and build the SQL query.
+
+    // The reference to the php file.
+    const response = await fetch('get_data.php');
+    const data = await response.json();
+
+    // Use 'data'.
+    console.log(data);
+    
+   
+  
+  
+  
+  //Get contents of the array (ex: 3,4,7,8) without ()s but with commas and build the SQL query.
 const HikeQuery ="SELECT * FROM hikes WHERE RatingNumber IN (" + filterCondition.slice(1, filterCondition.length)+")";
 loadDatabaseData();
 //Run query HikeQuery. This involves making a connection to the database.
@@ -115,6 +159,8 @@ console.log(HikeQuery);
         }
     });
 }
+*/
+
 
 function determineRating(rating, filterCondition){
   if (!(filterCondition.includes(rating))){
