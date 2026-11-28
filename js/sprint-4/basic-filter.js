@@ -1,4 +1,4 @@
-// sprint 3
+// sprint 4
 const filterCondition = [0];
 const counter = [0];
 
@@ -8,33 +8,33 @@ function checkStatus1(checkbox) {
   if (checkbox.checked) {
     filterCondition.push(1);
     filterCondition.push(2);
-    filterHikes2(filterCondition);
+    filterHikes3(filterCondition);
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(1), 1);
     filterCondition.splice(filterCondition.indexOf(2), 1);
-        filterHikes2(filterCondition);
+        filterHikes3(filterCondition);
   }
 }
 function checkStatus3(checkbox) {
   if (checkbox.checked) {
     filterCondition.push(3);
     filterCondition.push(4);
-    filterHikes2(filterCondition);
+    filterHikes3(filterCondition);
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(3), 1);
     filterCondition.splice(filterCondition.indexOf(4), 1);
-        filterHikes2(filterCondition);
+        filterHikes3(filterCondition);
   }
 }
 function checkStatus5(checkbox) {
   if (checkbox.checked) {
     filterCondition.push(5);
     filterCondition.push(6);
-    filterHikes2(filterCondition);
+    filterHikes3(filterCondition);
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(5), 1);
     filterCondition.splice(filterCondition.indexOf(6), 1);
-        filterHikes2(filterCondition);
+        filterHikes3(filterCondition);
   }
 }
 function checkStatus7(checkbox) {
