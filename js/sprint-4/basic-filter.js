@@ -93,64 +93,87 @@ function filterHikes2() {
 
 
 async function filterHikes4() {
-  // Create a clean URL parameter builder
-  const queryParams = new URLSearchParams();
+    // Create a clean URL parameter builder (automatically encodes spaces and commas)
+    const queryParams = new URLSearchParams();
 
-  // 1. DIFFICULTY RATING: Attach comma-separated ratings if any are selected
-  if (filterCondition.length > 1) {
-    const selectedRatings = filterCondition.slice(1).join(',');
-    queryParams.append('difficulty_ratings', selectedRatings);
-  }
+    // --- ROW 1: DIFFICULTY CHECKBOXES ---
+    // Index 0 in filterCondition is just a placeholder, so length > 1 means at least one rating is checked
+    if (filterCondition.length > 1) {
+      // Grab all selected rating numbers after index 0 and join them with commas (e.g., "3,4,7,8")
+      const selectedRatings = filterCondition.slice(1).join(',');
+      queryParams.append('difficulty_ratings', selectedRatings);
+    }
 
-  // 2. OPTIONAL EXTRA FILTERS (Uncomment and match to your HTML input IDs as you build them):
-  // const selectedParkName    = document.getElementById('park-name-filter')?.value;
-  // const maxElevationGain    = document.getElementById('elevation-gain-filter')?.value;
-  // const maxHikeDistance     = document.getElementById('hike-distance-filter')?.value;
-  // const selectedHikeStyle   = document.getElementById('hike-style-filter')?.value;
-  // const terrainTypeKeyword  = document.getElementById('terrain-type-filter')?.value;
+    // --- ROW 2: PARK NAME & HIKE STYLE DROPDOWNS ---
+    // Read the current selected option from each dropdown (optional chaining '?.' safely avoids errors if missing)
+    const selectedParkName  = document.getElementById('park-name-filter')?.value;
+    const selectedHikeStyle = document.getElementById('hike-style-filter')?.value;
 
-  // if (selectedParkName)   queryParams.append('park_name', selectedParkName);
-  // if (maxElevationGain)   queryParams.append('max_elevation_gain', maxElevationGain);
-  // if (maxHikeDistance)    queryParams.append('max_hike_distance', maxHikeDistance);
-  // if (selectedHikeStyle)  queryParams.append('hike_style', selectedHikeStyle);
-  // if (terrainTypeKeyword) queryParams.append('terrain_type', terrainTypeKeyword);
+    // --- ROW 3: MIN & MAX DISTANCE AND ELEVATION TEXTBOXES ---
+    // Read the typed numbers from all four min/max inputs
+    const minHikeDistance   = document.getElementById('min-hike-distance-filter')?.value;
+    const maxHikeDistance   = document.getElementById('max-hike-distance-filter')?.value;
+    const minElevationGain  = document.getElementById('min-elevation-gain-filter')?.value;
+    const maxElevationGain  = document.getElementById('max-elevation-gain-filter')?.value;
 
-  // Send the active filters to get_data.php (if queryParams is empty, it returns all hikes)
-  const response = await fetch(`get_data.php?${queryParams.toString()}`);
-  const matchingHikes = await response.json();
+    // --- ROW 4: TERRAIN KEYWORD SEARCH ---
+    // Read any keyword typed into the terrain search box (e.g., "gravel", "paved", "dirt")
+    const terrainTypeKeyword = document.getElementById('terrain-type-filter')?.value;
 
-  console.log('Filtered hikes from DB:', matchingHikes);
-  console.log('Active filterCondition:', filterCondition);
+    // Attach each filter to the URL ONLY if the user actually selected or typed a value
+    if (selectedParkName)   queryParams.append('park_name', selectedParkName);
+    if (selectedHikeStyle)  queryParams.append('hike_style', selectedHikeStyle);
+    if (minHikeDistance)    queryParams.append('min_hike_distance', minHikeDistance);
+    if (maxHikeDistance)    queryParams.append('max_hike_distance', maxHikeDistance);
+    if (minElevationGain)   queryParams.append('min_elevation_gain', minElevationGain);
+    if (maxElevationGain)   queryParams.append('max_elevation_gain', maxElevationGain);
+    if (terrainTypeKeyword) queryParams.append('terrain_type', terrainTypeKeyword);
 
-  // Rebuild and sort the hike cards on the page using the returned database rows
-  renderHikes(matchingHikes);
+    // Send the active filters to get_data.php (if queryParams is empty, get_data.php returns all hikes)
+    const response = await fetch(`get_data.php?${queryParams.toString()}`);
+
+    // Convert the JSON text returned by PHP into a JavaScript array of matching hike objects
+    const matchingHikes = await response.json();
+
+    console.log('Filtered hikes from DB:', matchingHikes);
+    console.log('Active filterCondition:', filterCondition);
+
+    // Rebuild, sort, and display the hike cards on the page using the returned database rows
+    renderHikes(matchingHikes);
 }
 
 function resetFilters() {
-  // 1. Reset the difficulty rating array back to its default state (keeps index 0)
-  filterCondition.length = 1;
+    // 1. Reset the difficulty rating array back to its initial state (keeps index 0, removes all selected ratings)
+    filterCondition.length = 1;
 
-  // 2. Uncheck all difficulty checkboxes inside .filterButtonDiv
-  document.querySelectorAll('.filterButtonDiv input[type="checkbox"]').forEach((checkbox) => {
-    checkbox.checked = false;
-  });
+    // 2. Find every difficulty checkbox inside .filterButtonDiv and uncheck it visually on the page
+    document.querySelectorAll('.filterButtonDiv input[type="checkbox"]').forEach((checkbox) => {
+      checkbox.checked = false;
+    });
 
-  // 3. Clear any extra filter inputs/dropdowns if they exist on the page
-  const parkNameInput = document.getElementById('park-name-filter');
-  const hikeDistanceInput = document.getElementById('hike-distance-filter');
-  const elevationGainInput = document.getElementById('elevation-gain-filter');
-  const hikeStyleInput = document.getElementById('hike-style-filter');
-  const terrainTypeInput = document.getElementById('terrain-type-filter');
+    // 3. List the HTML IDs of all dropdowns and text/number inputs across Rows 2, 3, and 4
+    const inputIds = [
+      'park-name-filter',
+      'hike-style-filter',
+      'min-hike-distance-filter',
+      'max-hike-distance-filter',
+      'min-elevation-gain-filter',
+      'max-elevation-gain-filter',
+      'terrain-type-filter'
+    ];
 
-  if (parkNameInput) parkNameInput.value = '';
-  if (hikeDistanceInput) hikeDistanceInput.value = '';
-  if (elevationGainInput) elevationGainInput.value = '';
-  if (hikeStyleInput) hikeStyleInput.value = '';
-  if (terrainTypeInput) terrainTypeInput.value = '';
+    // Loop through each input ID and clear its selected option or typed text back to empty ('')
+    inputIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.value = '';
+      }
+    });
 
-  // 4. Re-run filterHikes4() with empty filters to reload and display all hikes
-  filterHikes4();
+    // 4. Re-run filterHikes4() now that all filters are empty, which fetches and displays every hike again
+    filterHikes4();
 }
+
 
 
 /*

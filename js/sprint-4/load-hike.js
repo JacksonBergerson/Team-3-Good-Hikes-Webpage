@@ -697,12 +697,47 @@ async function renderHikes(rows) {
     }
 }
 
+
+// Reusable helper: Build unique, alphabetical <option> items for any database column
+function populateDropdown(rows, selectId, columnName, defaultLabel) {
+    const selectElement = document.getElementById(selectId);
+
+    // Stop if this page doesn't have the dropdown (such as hike-details.html)
+    if (!selectElement) return;
+
+    // 1. Grab every non-empty value for the specified database column
+    const allValues = rows
+        .map(row => row[columnName])
+        .filter(value => value && value.trim() !== '');
+
+    // 2. Remove duplicates using Set and sort alphabetically (A -> Z)
+    const uniqueSortedValues = [...new Set(allValues)].sort();
+
+    // 3. Set the default first option and add one <option> per unique value
+    selectElement.innerHTML = `<option value="">${defaultLabel}</option>`;
+
+    uniqueSortedValues.forEach(value => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = value;
+        selectElement.appendChild(option);
+    });
+}
+
 // Fetch and show all hikes when the list page first opens (or when Reset is clicked)
 async function showAllHikes() {
     const response = await fetch('get_data.php');
     const rows = await response.json();
+
+    // Auto-fill both dropdowns from the full database list
+    populateDropdown(rows, 'park-name-filter', 'park_name', 'All Parks');
+    populateDropdown(rows, 'hike-style-filter', 'hike_style', 'Any Style');
+
+    // Build and display all hike cards
     renderHikes(rows);
 }
+
+
 
 // Choose what to show based on which page elements are on this page
 const hikeCard = document.getElementById('hike-card');
