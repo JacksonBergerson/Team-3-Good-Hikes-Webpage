@@ -3,44 +3,77 @@
 header('Content-Type: application/json');
 
 // Database connection details from your cPanel MySQL settings
-$host = 'localhost'; // Almost always 'localhost' on cPanel
-$db   = 'teamgree_goodhikes';          // Replace with your cPanel database name
-$user = 'teamgree';          // Replace with your cPanel database username
-$pass = 'bP78:IMr3aR]8q';          // Replace with your database password
+$dbHost = 'localhost';
+$dbName = 'teamgree_goodhikes'; // Your database name from phpMyAdmin
+$dbUser = 'teamgree';                   // Replace with your cPanel database username
+$dbPass = 'bP78:IMr3aR]8q';                   // Replace with your database password
 
 // Create the connection to your MySQL database using PDO
-$pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+$pdoConnection = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
 
-// Check if JavaScript sent any rating numbers in the URL (e.g., get_data.php?ratings=3,4)
-// Option A (For text/string values, ignores "0" — commented out):
-// if (!empty($_GET['ratings'])) {
+// Start with a base query and empty arrays to hold active filter clauses and values
+$sqlQuery = "SELECT * FROM hikes";
+$whereClauses = []; // Holds SQL snippets like "hike_distance <= ?"
+$queryValues  = []; // Holds the actual values to plug into the '?' placeholders
 
-// Option B (Active — for TINYINT numbers, safely allows "0" as a valid rating):
-if (isset($_GET['ratings']) && $_GET['ratings'] !== '') {
-
-    // Split the comma-separated text "3,4,7" into a list: ["3", "4", "7"]
-    $rawRatings = explode(',', $_GET['ratings']);
-
-    // Convert every item in that list into a true integer (whole number) for TINYINT
-    $ratingsArray = array_map('intval', $rawRatings);
-
-    // Count how many numbers were sent and create matching '?' placeholders (e.g., "?,?,?")
-    $placeholders = implode(',', array_fill(0, count($ratingsArray), '?'));
-
-    // Prepare the SQL query with '?' placeholders so user input cannot break the SQL
-    $stmt = $pdo->prepare("SELECT * FROM hikes WHERE Rating IN ($placeholders)");
-
-    // Plug the actual numbers into the '?' placeholders and run the query
-    $stmt->execute($ratingsArray);
-
-} else {
-    // If no ratings were selected, run a simple query to get every hike in the table
-    $stmt = $pdo->query("SELECT * FROM hikes");
+// --- 0. SINGLE HIKE BY ID (For hike-details.html?id=1) ---
+if (isset($_GET['hike_id']) && $_GET['hike_id'] !== '') {
+    $whereClauses[] = "hike_id = ?";
+    $queryValues[]  = intval($_GET['hike_id']);
 }
 
-// Grab all matching rows and all columns from the database as an associative array
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// --- 1. DIFFICULTY RATING (Multiple TINYINT numbers, e.g., ?difficulty_ratings=3,4) ---
+if (isset($_GET['difficulty_ratings']) && $_GET['difficulty_ratings'] !== '') {
+    $rawDifficultyRatings   = explode(',', $_GET['difficulty_ratings']);
+    $cleanDifficultyRatings = array_map('intval', $rawDifficultyRatings);
+    $ratingPlaceholders     = implode(',', array_fill(0, count($cleanDifficultyRatings), '?'));
 
-// Convert the PHP array into a JSON string and send it back to your JavaScript fetch()
-echo json_encode($results);
+    $whereClauses[] = "difficulty_rating IN ($ratingPlaceholders)";
+    $queryValues    = array_merge($queryValues, $cleanDifficultyRatings);
+}
+
+// --- 2. PARK NAME (Exact match, e.g., ?park_name=Mount%20Rainier) ---
+if (isset($_GET['park_name']) && trim($_GET['park_name']) !== '') {
+    $whereClauses[] = "park_name = ?";
+    $queryValues[]  = trim($_GET['park_name']);
+}
+
+// --- 3. ELEVATION GAIN (Max feet as whole number, e.g., ?max_elevation_gain=1500) ---
+if (isset($_GET['max_elevation_gain']) && $_GET['max_elevation_gain'] !== '') {
+    $whereClauses[] = "elevation_gain <= ?";
+    $queryValues[]  = intval($_GET['max_elevation_gain']);
+}
+
+// --- 4. HIKE DISTANCE (Max distance as decimal, e.g., ?max_hike_distance=5.3) ---
+if (isset($_GET['max_hike_distance']) && $_GET['max_hike_distance'] !== '') {
+    $whereClauses[] = "hike_distance <= ?";
+    $queryValues[]  = floatval($_GET['max_hike_distance']);
+}
+
+// --- 5. HIKE STYLE (Exact match like "Out and Back" or "Loop", e.g., ?hike_style=Loop) ---
+if (isset($_GET['hike_style']) && trim($_GET['hike_style']) !== '') {
+    $whereClauses[] = "hike_style = ?";
+    $queryValues[]  = trim($_GET['hike_style']);
+}
+
+// --- 6. TERRAIN TYPE (Keyword search using LIKE, e.g., ?terrain_type=gravel) ---
+if (isset($_GET['terrain_type']) && trim($_GET['terrain_type']) !== '') {
+    $whereClauses[] = "terrain_type LIKE ?";
+    $queryValues[]  = '%' . trim($_GET['terrain_type']) . '%';
+}
+
+// Attach WHERE and combine all active filters with AND
+if (count($whereClauses) > 0) {
+    $sqlQuery .= " WHERE " . implode(" AND ", $whereClauses);
+}
+
+// Keep results in a consistent order by hike_id
+$sqlQuery .= " ORDER BY hike_id ASC";
+
+// Prepare, execute, and return the matching records as JSON
+$preparedStatement = $pdoConnection->prepare($sqlQuery);
+$preparedStatement->execute($queryValues);
+$matchingHikes = $preparedStatement->fetchAll(PDO::FETCH_ASSOC);
+
+echo json_encode($matchingHikes);
 ?>
