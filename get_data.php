@@ -28,7 +28,7 @@ if (isset($_GET['ratings']) && $_GET['ratings'] !== '') {
     $placeholders = implode(',', array_fill(0, count($ratingsArray), '?'));
 
     // Prepare the SQL query with '?' placeholders so user input cannot break the SQL
-    $stmt = $pdo->prepare("SELECT * FROM hikes WHERE rating IN ($placeholders)");
+    $stmt = $pdo->prepare("SELECT * FROM hikes WHERE Rating IN ($placeholders)");
 
     // Plug the actual numbers into the '?' placeholders and run the query
     $stmt->execute($ratingsArray);
