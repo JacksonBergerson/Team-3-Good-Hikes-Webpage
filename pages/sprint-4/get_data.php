@@ -38,13 +38,25 @@ if (isset($_GET['park_name']) && trim($_GET['park_name']) !== '') {
     $queryValues[]  = trim($_GET['park_name']);
 }
 
-// --- 3. ELEVATION GAIN (Max feet as whole number, e.g., ?max_elevation_gain=1500) ---
+// --- 3A. MINIMUM ELEVATION GAIN (e.g., ?min_elevation_gain=500) ---
+if (isset($_GET['min_elevation_gain']) && $_GET['min_elevation_gain'] !== '') {
+    $whereClauses[] = "elevation_gain >= ?";
+    $queryValues[]  = intval($_GET['min_elevation_gain']);
+}
+
+// --- 3b. ELEVATION GAIN (Max feet as whole number, e.g., ?max_elevation_gain=1500) ---
 if (isset($_GET['max_elevation_gain']) && $_GET['max_elevation_gain'] !== '') {
     $whereClauses[] = "elevation_gain <= ?";
     $queryValues[]  = intval($_GET['max_elevation_gain']);
 }
 
-// --- 4. HIKE DISTANCE (Max distance as decimal, e.g., ?max_hike_distance=5.3) ---
+// --- 4A. MINIMUM HIKE DISTANCE (e.g., ?min_hike_distance=1.5) ---
+if (isset($_GET['min_hike_distance']) && $_GET['min_hike_distance'] !== '') {
+    $whereClauses[] = "hike_distance >= ?";
+    $queryValues[]  = floatval($_GET['min_hike_distance']);
+}
+
+// --- 4B. HIKE DISTANCE (Max distance as decimal, e.g., ?max_hike_distance=5.3) ---
 if (isset($_GET['max_hike_distance']) && $_GET['max_hike_distance'] !== '') {
     $whereClauses[] = "hike_distance <= ?";
     $queryValues[]  = floatval($_GET['max_hike_distance']);
