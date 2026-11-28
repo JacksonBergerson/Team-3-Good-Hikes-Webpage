@@ -11,6 +11,8 @@
         <script defer src="/js/sprint-4/load-hike.js"></script>
         <script defer src="/js/sprint-4/basic-filter.js"></script>
     </head>
+    
+    <!--
     <body>
             <div class="filterButtonDiv">
             <span class="filter-label">Filter By:</span>
@@ -31,6 +33,74 @@
             </label>
                 <input type="checkbox" onchange="filterHikes3()"> Make query based on selected checkboxes
         </div>
+        <div class="hike-list"></div>
+    </body>
+     -->
+
+
+    <body>
+        <div class="filterButtonDiv">
+            <span class="filter-label">Difficulty:</span>
+            <label class="filter-option" data-difficulty-band="beginner">
+                <input type="checkbox" onchange="checkStatus1(this)"> Beginner (1-2)
+            </label>
+            <label class="filter-option" data-difficulty-band="easy">
+                <input type="checkbox" onchange="checkStatus3(this)"> Easy (3-4)
+            </label>
+            <label class="filter-option" data-difficulty-band="moderate">
+                <input type="checkbox" onchange="checkStatus5(this)"> Moderate (5-6)
+            </label>
+            <label class="filter-option" data-difficulty-band="hard">
+                <input type="checkbox" onchange="checkStatus7(this)"> Hard (7-8)
+            </label>
+            <label class="filter-option" data-difficulty-band="strenuous">
+                <input type="checkbox" onchange="checkStatus9(this)"> Strenuous (9-10)
+            </label>
+
+            <!-- 1. PARK NAME (Exact match dropdown) -->
+            <label class="filter-option" for="park-name-filter">
+                Park:
+                <select id="park-name-filter">
+                    <option value="">All Parks</option>
+                    <option value="Mt Rainier">Mt Rainier</option>
+                    <!-- Add your other park_name values here -->
+                </select>
+            </label>
+
+            <!-- 2. MAX HIKE DISTANCE (Decimal number input) -->
+            <label class="filter-option" for="hike-distance-filter">
+                Max Distance (miles):
+                <input type="number" id="hike-distance-filter" min="0" step="0.1" placeholder="e.g. 5.5">
+            </label>
+
+            <!-- 3. MAX ELEVATION GAIN (Whole number input) -->
+            <label class="filter-option" for="elevation-gain-filter">
+                Max Elevation (ft):
+                <input type="number" id="elevation-gain-filter" min="0" step="100" placeholder="e.g. 1500">
+            </label>
+
+            <!-- 4. HIKE STYLE (Exact match dropdown) -->
+            <label class="filter-option" for="hike-style-filter">
+                Style:
+                <select id="hike-style-filter">
+                    <option value="">Any Style</option>
+                    <option value="Loop">Loop</option>
+                    <option value="Out and Back">Out and Back</option>
+                    <option value="Point to Point">Point to Point</option>
+                </select>
+            </label>
+
+            <!-- 5. TERRAIN TYPE (Keyword text search) -->
+            <label class="filter-option" for="terrain-type-filter">
+                Terrain Keyword:
+                <input type="text" id="terrain-type-filter" placeholder="e.g. gravel, paved, dirt">
+            </label>
+
+            <!-- Action Buttons -->
+            <button type="button" onclick="filterHikes4()">Apply Filters</button>
+            <button type="button" onclick="resetFilters()">Reset</button>
+        </div>
+
         <div class="hike-list"></div>
     </body>
 </html>
