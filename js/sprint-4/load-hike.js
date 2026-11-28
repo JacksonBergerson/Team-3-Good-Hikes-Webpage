@@ -1,5 +1,6 @@
-// sprint 3
+// Sprint 4
 
+// update: all trails data storage is now in the database, not hard-coded here.
 // all trails data storage for all hikes -- add hikes here
 /*
 template:
@@ -15,6 +16,9 @@ coordinates: {latitude: 0, longitude: 0},
 image: ""
 },
 */
+
+
+/*
 const hikes = {
     "skyline-loop": {
         park:"Mt Rainier",
@@ -325,7 +329,9 @@ const hikes = {
         image: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTAxMDg1MDQ5L2IxZDk2MDJiODNjMTI2NTNjMDdhOWIzMGMxYTQyM2E2LmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjIwNDgiLCJoZWlnaHQiOiIyMDQ4IiwiZml0IjoiaW5zaWRlIn0sInJvdGF0ZSI6bnVsbCwianBlZyI6eyJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXNlU2NhbnMiOnRydWUsInF1YW50aXNhdGlvblRhYmxlIjozfX19"
     },
 };
+*/
 
+/* commenting out this original code.
 // read the "id" value from the browser's URL (e.g. ?id=skyline-loop)
 const urlParams = new URLSearchParams(window.location.search);
 const hikeId = urlParams.get('id');
@@ -467,6 +473,238 @@ function showAllHikes() {
 }
 
 // choose what to show based on which page elements are on this page.
+const hikeCard = document.getElementById('hike-card');
+const hikeList = document.querySelector('.hike-list');
+
+if (hikeCard) {
+    showHikeDetails();
+} else if (hikeList) {
+    showAllHikes();
+}
+*/
+
+
+// =========================================================================
+// KEEP THE HARDCODED `const hikes = { ... };` COMMENTED OUT ABOVE THIS LINE
+// =========================================================================
+
+// Read the "id" value from the browser's URL (e.g., hike-details.html?id=1)
+const urlParams = new URLSearchParams(window.location.search);
+const hikeId = urlParams.get('id');
+
+// Helper: Turn database terrain text like "paved (95%), steps (5%)" back into
+// a JavaScript object like { paved: 95, steps: 5 } so difficult-system.js can calculate surface weights
+function parseSurfaceText(terrainText) {
+    if (!terrainText) return null;
+
+    const surfaceObj = {};
+    const matches = terrainText.matchAll(/([a-zA-Z]+)\s*\((\d+)%\)/g);
+
+    for (const match of matches) {
+        const surfaceName = match[1].toLowerCase(); // e.g., "paved"
+        const percentage  = Number(match[2]);       // e.g., 95
+        surfaceObj[surfaceName] = percentage;
+    }
+
+    return Object.keys(surfaceObj).length > 0 ? surfaceObj : null;
+}
+
+// Helper: Convert one database row (snake_case columns) into the property names your existing functions expect
+function formatDbHike(row) {
+    return {
+        id: row.hike_id,
+        park: row.park_name,
+        name: row.hike_name,
+        coordinates: row.coordinates,
+        length: row.hike_distance_description || (row.hike_distance ? `${row.hike_distance} miles` : 'N/A'),
+        elevationGain: row.elevation_gain ? `${row.elevation_gain}ft` : 'N/A',
+        style: row.hike_style || 'N/A',
+        difficulty: row.difficulty_rating_description || row.difficulty_rating,
+        rating: row.difficulty_rating,
+        terrain: row.terrain_type,
+        surface: parseSurfaceText(row.terrain_type),
+        image: row.hike_image,
+        alltrailsLink: row.alltrails_link
+    };
+}
+
+// Show one hike on the details page (hike-details.html?id=1)
+async function showHikeDetails() {
+    const hikeCard = document.getElementById('hike-card');
+
+    // Fetch just the single hike matching the ID in the URL
+    const response = await fetch(`get_data.php?hike_id=${encodeURIComponent(hikeId)}`);
+    const rows = await response.json();
+
+    if (!rows || rows.length === 0) {
+        hikeCard.innerHTML = '<h2>Hike not found.</h2>';
+        return;
+    }
+
+    // Grab the first matching row from the returned array
+    const hike = formatDbHike(rows[0]);
+
+    document.title = hike.name;
+    document.getElementById('hikePark').textContent = hike.park;
+    document.getElementById('hikeName').textContent = hike.name;
+    document.getElementById('hikeLength').textContent = `Length: ${hike.length}`;
+    document.getElementById('hikeElevation').textContent = `Elevation Gain: ${hike.elevationGain}`;
+    document.getElementById('hikeStyle').textContent = `Style: ${hike.style}`;
+    document.getElementById('hikeDifficulty').textContent = `Difficulty: ${hike.difficulty}`;
+    document.getElementById('hikeImage').src = hike.image;
+
+    applyDifficultyRating(hikeCard, hike);
+    showGuideNotes(hikeId);
+}
+
+// Load and display saved guide notes for the selected hike
+function showGuideNotes(selectedHikeId) {
+    const notesList = document.getElementById('guide-notes-list');
+    let notes;
+
+    try {
+        // Read notes saved locally by the guide notes form
+        const storedNotes = localStorage.getItem('goodHikesGuideNotes');
+        notes = storedNotes ? JSON.parse(storedNotes) : [];
+
+        if (!Array.isArray(notes)) {
+            throw new Error('Saved notes are not in the expected format.');
+        }
+    } catch (error) {
+        notesList.textContent = `Unable to load guide notes: ${error.message}`;
+        return;
+    }
+
+    // Keep only valid notes that belong to this hike
+    const hikeNotes = notes.filter(function (note) {
+        if (!note || typeof note.text !== 'string') {
+            return false;
+        }
+
+        // Use == so URL string "1" matches numeric ID 1 if saved either way
+        return note.hikeId == selectedHikeId;
+    });
+
+    if (hikeNotes.length === 0) {
+        const emptyMessage = document.createElement('li');
+        emptyMessage.textContent = 'No guide notes have been added for this trail yet.';
+        notesList.appendChild(emptyMessage);
+        return;
+    }
+
+    // Add each matching note to the trail page
+    hikeNotes.forEach(function (note) {
+        const item = document.createElement('li');
+        item.textContent = note.text;
+        notesList.appendChild(item);
+    });
+}
+
+// Make one hike card for the all-hikes page
+function makeHikeCard(hikeId, hike) {
+    const card = document.createElement('div');
+    card.className = 'hike';
+
+    const title = document.createElement('strong');
+    const link = document.createElement('a');
+    link.href = `hike-details.html?id=${encodeURIComponent(hikeId)}`;
+    link.textContent = hike.name;
+    title.appendChild(link);
+    card.appendChild(title);
+
+    const park = document.createElement('p');
+    park.className = 'park';
+    park.textContent = `Park: ${hike.park}`;
+    card.appendChild(park);
+    
+    const length = document.createElement('p');
+    length.className = 'length';
+    length.textContent = `Length: ${hike.length}`;
+    card.appendChild(length);
+
+    const elevation = document.createElement('p');
+    elevation.className = 'elevationGain';
+    elevation.textContent = `Elevation Gain: ${hike.elevationGain}`;
+    card.appendChild(elevation);
+
+    const style = document.createElement('p');
+    style.textContent = `Style: ${hike.style}`;
+    card.appendChild(style);
+
+    const difficulty = document.createElement('p');
+    difficulty.className = 'difficulty';
+    card.appendChild(difficulty);
+
+    if (hike.image) {
+        const image = document.createElement('img');
+        image.src = hike.image;
+        image.alt = 'An image of ' + hike.name + '.';
+        image.width = 300;
+        card.appendChild(image);
+    }
+
+    applyDifficultyRating(card, hike);
+    return card;
+}
+
+// Build, sort, display, and sync calculated difficulty ratings back to MySQL
+async function renderHikes(rows) {
+    const hikeList = document.querySelector('.hike-list');
+    hikeList.innerHTML = '';
+
+    if (!rows || rows.length === 0) {
+        hikeList.innerHTML = '<p>No hikes match your selected filters.</p>';
+        return;
+    }
+
+    const cards = [];
+    const ratingUpdates = [];
+
+    for (let i = 0; i < rows.length; i++) {
+        const formattedHike = formatDbHike(rows[i]);
+        const card = makeHikeCard(formattedHike.id, formattedHike);
+        cards.push(card);
+
+        // Read the newly calculated rating & band that applyDifficultyRating() just saved onto the card
+        const calculatedRating = Number(card.getAttribute('data-difficulty-rating'));
+        const calculatedBand   = card.getAttribute('data-difficulty-band');
+        const capitalizedBand  = calculatedBand.charAt(0).toUpperCase() + calculatedBand.slice(1);
+
+        // Add this hike's calculated rating to our update list for MySQL
+        ratingUpdates.push({
+            hike_id: formattedHike.id,
+            difficulty_rating: calculatedRating,
+            difficulty_rating_description: capitalizedBand
+        });
+    }
+
+    // Send the calculated ratings to update_difficulty.php so MySQL stays synced
+    await fetch('update_difficulty.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(ratingUpdates)
+    });
+
+    // Sort the HTML cards from easiest to hardest
+    cards.sort(function (firstCard, secondCard) {
+        const firstRating = Number(firstCard.getAttribute('data-difficulty-rating'));
+        const secondRating = Number(secondCard.getAttribute('data-difficulty-rating'));
+        return firstRating - secondRating;
+    });
+
+    for (let i = 0; i < cards.length; i++) {
+        hikeList.appendChild(cards[i]);
+    }
+}
+
+// Fetch and show all hikes when the list page first opens (or when Reset is clicked)
+async function showAllHikes() {
+    const response = await fetch('get_data.php');
+    const rows = await response.json();
+    renderHikes(rows);
+}
+
+// Choose what to show based on which page elements are on this page
 const hikeCard = document.getElementById('hike-card');
 const hikeList = document.querySelector('.hike-list');
 

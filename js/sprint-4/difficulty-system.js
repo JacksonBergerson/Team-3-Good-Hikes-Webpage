@@ -1,4 +1,4 @@
-// Sprint 3 difficulty rating system
+// Sprint 4 difficulty rating system
 
 /*
 difficulty rating system on a 1-10 scale
@@ -148,4 +148,4 @@ const TERRAIN_TAGS = {
     technical: 1.5
 };
 
-applyDifficultyRatings();
+//applyDifficultyRatings();

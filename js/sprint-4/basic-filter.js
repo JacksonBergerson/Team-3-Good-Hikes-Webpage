@@ -8,55 +8,55 @@ function checkStatus1(checkbox) {
   if (checkbox.checked) {
     filterCondition.push(1);
     filterCondition.push(2);
-    filterHikes3(filterCondition);
+    filterHikes4(filterCondition);
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(1), 1);
     filterCondition.splice(filterCondition.indexOf(2), 1);
-        filterHikes3(filterCondition);
+        filterHikes4(filterCondition);
   }
 }
 function checkStatus3(checkbox) {
   if (checkbox.checked) {
     filterCondition.push(3);
     filterCondition.push(4);
-    filterHikes3(filterCondition);
+    filterHikes4(filterCondition);
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(3), 1);
     filterCondition.splice(filterCondition.indexOf(4), 1);
-        filterHikes3(filterCondition);
+        filterHikes4(filterCondition);
   }
 }
 function checkStatus5(checkbox) {
   if (checkbox.checked) {
     filterCondition.push(5);
     filterCondition.push(6);
-    filterHikes3(filterCondition);
+    filterHikes4(filterCondition);
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(5), 1);
     filterCondition.splice(filterCondition.indexOf(6), 1);
-        filterHikes3(filterCondition);
+        filterHikes4(filterCondition);
   }
 }
 function checkStatus7(checkbox) {
   if (checkbox.checked) {
     filterCondition.push(7);
     filterCondition.push(8);
-    filterHikes2(filterCondition);
+    filterHikes4(filterCondition);
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(7), 1);
     filterCondition.splice(filterCondition.indexOf(8), 1);
-        filterHikes2(filterCondition);
+        filterHikes4(filterCondition);
   }
 }
 function checkStatus9(checkbox) {
   if (checkbox.checked) {
     filterCondition.push(9);
     filterCondition.push(10);
-    filterHikes2(filterCondition);
+    filterHikes4(filterCondition);
   } else if (!(checkbox.checked)){
     filterCondition.splice(filterCondition.indexOf(9), 1);
     filterCondition.splice(filterCondition.indexOf(10), 1);
-        filterHikes2(filterCondition);
+        filterHikes4(filterCondition);
   }
 }
 
@@ -92,6 +92,68 @@ function filterHikes2() {
 }
 
 
+async function filterHikes4() {
+  // Create a clean URL parameter builder
+  const queryParams = new URLSearchParams();
+
+  // 1. DIFFICULTY RATING: Attach comma-separated ratings if any are selected
+  if (filterCondition.length > 1) {
+    const selectedRatings = filterCondition.slice(1).join(',');
+    queryParams.append('difficulty_ratings', selectedRatings);
+  }
+
+  // 2. OPTIONAL EXTRA FILTERS (Uncomment and match to your HTML input IDs as you build them):
+  // const selectedParkName    = document.getElementById('park-name-filter')?.value;
+  // const maxElevationGain    = document.getElementById('elevation-gain-filter')?.value;
+  // const maxHikeDistance     = document.getElementById('hike-distance-filter')?.value;
+  // const selectedHikeStyle   = document.getElementById('hike-style-filter')?.value;
+  // const terrainTypeKeyword  = document.getElementById('terrain-type-filter')?.value;
+
+  // if (selectedParkName)   queryParams.append('park_name', selectedParkName);
+  // if (maxElevationGain)   queryParams.append('max_elevation_gain', maxElevationGain);
+  // if (maxHikeDistance)    queryParams.append('max_hike_distance', maxHikeDistance);
+  // if (selectedHikeStyle)  queryParams.append('hike_style', selectedHikeStyle);
+  // if (terrainTypeKeyword) queryParams.append('terrain_type', terrainTypeKeyword);
+
+  // Send the active filters to get_data.php (if queryParams is empty, it returns all hikes)
+  const response = await fetch(`get_data.php?${queryParams.toString()}`);
+  const matchingHikes = await response.json();
+
+  console.log('Filtered hikes from DB:', matchingHikes);
+  console.log('Active filterCondition:', filterCondition);
+
+  // Rebuild and sort the hike cards on the page using the returned database rows
+  renderHikes(matchingHikes);
+}
+
+function resetFilters() {
+  // 1. Reset the difficulty rating array back to its default state (keeps index 0)
+  filterCondition.length = 1;
+
+  // 2. Uncheck all difficulty checkboxes inside .filterButtonDiv
+  document.querySelectorAll('.filterButtonDiv input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+
+  // 3. Clear any extra filter inputs/dropdowns if they exist on the page
+  const parkNameInput = document.getElementById('park-name-filter');
+  const hikeDistanceInput = document.getElementById('hike-distance-filter');
+  const elevationGainInput = document.getElementById('elevation-gain-filter');
+  const hikeStyleInput = document.getElementById('hike-style-filter');
+  const terrainTypeInput = document.getElementById('terrain-type-filter');
+
+  if (parkNameInput) parkNameInput.value = '';
+  if (hikeDistanceInput) hikeDistanceInput.value = '';
+  if (elevationGainInput) elevationGainInput.value = '';
+  if (hikeStyleInput) hikeStyleInput.value = '';
+  if (terrainTypeInput) terrainTypeInput.value = '';
+
+  // 4. Re-run filterHikes4() with empty filters to reload and display all hikes
+  filterHikes4();
+}
+
+
+/*
 async function filterHikes3() {
   // Get the comma-separated numbers (e.g., "3,4,7,8")
   const ratings = filterCondition.slice(1).join(',');
@@ -119,7 +181,7 @@ async function filterHikes3() {
     hike.classList.toggle('hidden', !matchesFilter);
   });
 }
-
+*/
 
 
 /*
@@ -167,34 +229,6 @@ function determineRating(rating, filterCondition){
     return false;
   } else{
     return true;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-async function loadDatabaseData() {
-  try {
-    // Call the PHP file sitting on cPanel
-    const response = await fetch('get_data.php');
-    const data = await response.json();
-
-    if (data.error) {
-      console.error('Server Error:', data.error);
-      return;
-    }
-
-    // Use database rows here
-    console.log('Data from phpMyAdmin:', data);
-
-  } catch (err) {
-    console.error('Fetch failed:', err);
   }
 }
 
